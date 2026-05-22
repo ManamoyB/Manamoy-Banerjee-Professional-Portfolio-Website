@@ -25,14 +25,15 @@ export function AboutContent() {
         />
       </SectionWrapper>
 
-      <SectionWrapper className="py-10">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <SectionWrapper className="py-12">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <FadeIn>
-            <Card className="h-full border-border/70 bg-card/80 backdrop-blur">
+            <Card className="h-full border-cyan/20 bg-card/50 backdrop-blur hover:border-cyan/40 hover:bg-card/70 transition-all duration-300">
               <CardContent className="p-8">
-                <Badge variant="outline">Biography</Badge>
-                <h2 className="mt-5 text-3xl font-semibold tracking-normal">
-                  Building a career at the intersection of AI, software, and data.
+                <Badge variant="outline" className="border-cyan/30 text-cyan">Biography</Badge>
+                <h2 className="mt-6 text-4xl font-bold tracking-tight leading-tight">
+                  Building a career at the intersection of{" "}
+                  <span className="bg-gradient-cyan-violet bg-clip-text text-transparent">AI, software, and data</span>.
                 </h2>
                 <div className="mt-5 space-y-4 leading-8 text-muted-foreground">
                   <p>
@@ -54,10 +55,10 @@ export function AboutContent() {
 
           <div className="grid gap-6">
             <FadeIn delay={0.08}>
-              <Card className="border-border/70 bg-card/80 backdrop-blur">
+              <Card className="border-violet/20 bg-card/50 backdrop-blur hover:border-violet/40 hover:bg-card/70 transition-all duration-300">
                 <CardContent className="p-6">
-                  <Compass className="size-5 text-primary" />
-                  <h3 className="mt-4 text-lg font-semibold">Mission</h3>
+                  <Compass className="size-5 text-violet" />
+                  <h3 className="mt-4 text-lg font-bold">Mission</h3>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">
                     Build intelligent products that reduce friction, improve decisions,
                     and make complex systems easier to use.
@@ -66,10 +67,10 @@ export function AboutContent() {
               </Card>
             </FadeIn>
             <FadeIn delay={0.14}>
-              <Card className="border-border/70 bg-card/80 backdrop-blur">
+              <Card className="border-cyan/20 bg-card/50 backdrop-blur hover:border-cyan/40 hover:bg-card/70 transition-all duration-300">
                 <CardContent className="p-6">
-                  <Lightbulb className="size-5 text-primary" />
-                  <h3 className="mt-4 text-lg font-semibold">Philosophy</h3>
+                  <Lightbulb className="size-5 text-cyan" />
+                  <h3 className="mt-4 text-lg font-bold">Philosophy</h3>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">
                     Great engineering profiles are built through clarity, taste, steady
                     execution, and proof that the person can keep learning while shipping.
@@ -82,11 +83,11 @@ export function AboutContent() {
       </SectionWrapper>
 
       <SectionWrapper className="py-16">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <FadeIn>
             <div className="sticky top-24">
-              <GraduationCap className="size-7 text-primary" />
-              <h2 className="mt-4 text-3xl font-semibold tracking-normal">
+              <GraduationCap className="size-7 text-cyan" />
+              <h2 className="mt-4 text-3xl font-bold tracking-tight">
                 Education and growth timeline
               </h2>
               <p className="mt-4 leading-8 text-muted-foreground">
@@ -128,14 +129,14 @@ type InfoPanelProps = {
 function InfoPanel({ icon: Icon, title, items }: InfoPanelProps) {
   return (
     <FadeIn>
-      <Card className="h-full border-border/70 bg-card/80 backdrop-blur">
+      <Card className="h-full border-cyan/20 bg-card/50 backdrop-blur hover:border-cyan/40 hover:bg-card/70 transition-all duration-300">
         <CardContent className="p-6">
-          <Icon className="size-5 text-primary" />
-          <h2 className="mt-4 text-xl font-semibold">{title}</h2>
-          <StaggerContainer className="mt-5 grid gap-3">
+          <Icon className="size-5 text-cyan" />
+          <h2 className="mt-4 text-lg font-bold">{title}</h2>
+          <StaggerContainer className="mt-5 grid gap-2">
             {items.map((item) => (
               <StaggerItem
-                className="rounded-md border bg-background/60 px-4 py-3 text-sm leading-6 text-muted-foreground"
+                className="rounded-lg border border-cyan/15 bg-background/40 px-4 py-3 text-sm leading-6 text-muted-foreground hover:border-cyan/30 hover:bg-background/60 transition-all duration-200"
                 key={item}
               >
                 {item}

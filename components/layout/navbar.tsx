@@ -32,14 +32,14 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 w-full border-b border-cyan/10 bg-background/40 backdrop-blur-2xl shadow-sm shadow-background/10">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="flex size-9 items-center justify-center rounded-lg bg-foreground text-sm font-bold text-background">
+        <Link href="/" className="flex items-center gap-3 group">
+          <span className="flex size-9 items-center justify-center rounded-lg bg-gradient-cyan-violet text-sm font-bold text-background group-hover:shadow-lg group-hover:shadow-cyan/40 transition-all duration-300">
             M
           </span>
           <span className="hidden leading-none sm:block">
-            <span className="block text-sm font-semibold">{siteConfig.name}</span>
+            <span className="block text-sm font-bold text-foreground">{siteConfig.name}</span>
             <span className="block text-xs text-muted-foreground">
               AI product builder
             </span>
@@ -56,9 +56,9 @@ export function Navbar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
+                    "rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-background/50 relative",
                     isActivePath(pathname, item.href) &&
-                      "bg-muted text-foreground shadow-sm",
+                      "text-cyan bg-gradient-to-r from-cyan/10 to-transparent shadow-sm after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-gradient-cyan-violet",
                   )}
                 >
                   {item.title}
@@ -69,8 +69,8 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Button asChild variant="premium" size="sm" className="hidden sm:inline-flex">
+        <div className="flex items-center gap-3">
+          <Button asChild variant="gradient" size="sm" className="hidden sm:inline-flex">
             <Link href="/contact">
               <Sparkles />
               Contact
