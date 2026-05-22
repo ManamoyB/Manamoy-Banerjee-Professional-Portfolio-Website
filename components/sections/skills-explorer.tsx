@@ -36,8 +36,8 @@ export function SkillsExplorer() {
         />
       </SectionWrapper>
 
-      <SectionWrapper className="py-8">
-        <div className="grid gap-5 lg:grid-cols-3">
+      <SectionWrapper className="py-10">
+        <div className="grid gap-6 lg:grid-cols-3">
           <MetricCard
             icon={Blocks}
             label="Categories"
@@ -98,23 +98,23 @@ export function SkillsExplorer() {
         <div className="grid gap-4 lg:grid-cols-7">
           {skillHeatmap.map((group) => (
             <Card
-              className="border-border/70 bg-card/75 backdrop-blur"
+              className="border-cyan/20 bg-card/50 backdrop-blur hover:border-cyan/40 hover:bg-card/70 transition-all duration-300"
               key={group.category}
             >
-              <CardContent className="p-4">
-                <h3 className="text-sm font-semibold">{group.category}</h3>
+              <CardContent className="p-5">
+                <h3 className="text-sm font-bold text-foreground">{group.category}</h3>
                 <div className="mt-4 grid grid-cols-2 gap-2 lg:grid-cols-1">
                   {group.skills.map((skill) => (
                     <div
                       className={cn(
-                        "rounded-md border px-3 py-2 text-xs font-medium",
+                        "rounded-lg border px-3 py-2 text-xs font-semibold transition-all duration-200",
                         skill.proficiency >= 84 &&
-                          "border-primary/40 bg-primary/20 text-primary",
+                          "border-cyan/50 bg-cyan/25 text-cyan hover:border-cyan/70 hover:bg-cyan/35",
                         skill.proficiency >= 74 &&
                           skill.proficiency < 84 &&
-                          "border-accent/60 bg-accent/45 text-accent-foreground",
+                          "border-violet/40 bg-violet/15 text-violet hover:border-violet/60 hover:bg-violet/25",
                         skill.proficiency < 74 &&
-                          "border-border bg-muted/60 text-muted-foreground",
+                          "border-border/50 bg-muted/40 text-muted-foreground hover:border-border hover:bg-muted/60",
                       )}
                       key={skill.name}
                     >
@@ -139,14 +139,14 @@ type MetricCardProps = {
 
 function MetricCard({ icon: Icon, label, value }: MetricCardProps) {
   return (
-    <Card className="border-border/70 bg-card/80 backdrop-blur">
-      <CardContent className="flex items-center gap-4 p-5">
-        <div className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+    <Card className="border-cyan/20 bg-card/50 backdrop-blur hover:border-cyan/40 hover:bg-card/70 transition-all duration-300">
+      <CardContent className="flex items-center gap-4 p-6">
+        <div className="flex size-12 items-center justify-center rounded-lg bg-gradient-cyan-violet/20 text-cyan">
           <Icon className="size-5" />
         </div>
         <div>
-          <p className="font-mono text-2xl font-semibold">{value}</p>
-          <p className="text-sm text-muted-foreground">{label}</p>
+          <p className="font-mono text-3xl font-bold text-foreground">{value}</p>
+          <p className="text-sm font-medium text-muted-foreground">{label}</p>
         </div>
       </CardContent>
     </Card>

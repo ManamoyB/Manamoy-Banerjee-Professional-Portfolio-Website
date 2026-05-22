@@ -9,12 +9,12 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/70 bg-background/80">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
+    <footer className="border-t border-cyan/10 bg-background/40 backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <Link href="/" className="flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center rounded-lg bg-foreground text-sm font-bold text-background">
+            <Link href="/" className="flex items-center gap-3 group">
+              <span className="flex size-10 items-center justify-center rounded-lg bg-gradient-cyan-violet text-sm font-bold text-background group-hover:shadow-lg group-hover:shadow-cyan/40 transition-all duration-300">
                 M
               </span>
               <span>
@@ -32,7 +32,7 @@ export function Footer() {
                 const Icon = link.icon;
 
                 return (
-                  <Button asChild variant="outline" size="icon" key={link.label}>
+                  <Button asChild variant="glass" size="icon" key={link.label} className="hover:border-cyan/50">
                     <a href={link.href} aria-label={link.label}>
                       <Icon />
                     </a>
@@ -58,12 +58,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold">Contact</h2>
+            <h2 className="text-sm font-bold">Contact</h2>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
               Open to thoughtful engineering opportunities, AI product work, and
               product-minded collaborations.
             </p>
-            <Button asChild className="mt-5 w-fit">
+            <Button asChild variant="gradient" className="mt-5 w-fit">
               <Link href="/contact">
                 Start a conversation
                 <ArrowUpRight />

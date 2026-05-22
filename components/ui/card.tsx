@@ -7,7 +7,20 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card"
       className={cn(
-        "rounded-lg border bg-card text-card-foreground shadow-sm",
+        "rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function CardGradient({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-gradient"
+      className={cn(
+        "rounded-lg border border-transparent bg-clip-padding p-px bg-gradient-cyan-violet before:absolute before:inset-0 before:-z-10 before:rounded-lg before:bg-gradient-cyan-violet before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
         className,
       )}
       {...props}
@@ -61,4 +74,4 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };
+export { Card, CardGradient, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };
