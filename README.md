@@ -1,211 +1,89 @@
-# Manamoy Portfolio Platform
+# Manamoy Personal Brand Platform
 
-A production-grade premium personal branding platform built to showcase projects, technical skills, certifications, achievements, and professional journey.
+Production-ready V1 personal branding platform for Manamoy, built with Next.js 15, React 19, TypeScript, Tailwind CSS, shadcn/ui-style primitives, Framer Motion, and MDX content support.
 
-This is not just a portfolio website—it is a flagship engineering project designed to function as a personal product ecosystem.
+## Stack
 
-Built with modern web technologies, responsive architecture, scalable design patterns, and deployment-ready infrastructure.
-
----
-
-## Live Demo
-
-**Production URL:**  
-https://your-vercel-domain.vercel.app
-
-**Custom Domain (Optional):**  
-https://yourdomain.com
-
----
-
-## Project Vision
-
-The goal of this platform is to create a recruiter-grade professional digital identity that combines:
-
-- Personal branding
-- Project storytelling
-- Technical portfolio showcase
-- Resume accessibility
-- Skills visualization
-- Blog publishing
-- Certification management
-- Recruiter-focused quick access
-- Life journey storytelling
-- Achievement presentation
-
-Future roadmap includes AI assistant integration, analytics intelligence, admin CMS, GitHub automation, and productivity dashboards.
-
----
-
-## Features
-
-### Public Portfolio
-- Premium landing page
-- Professional about page
-- Interactive skills dashboard
-- Fully responsive layout
-- Dark / light theme
-- Smooth modern animations
-
----
-
-### Project Showcase
-- Project listing
-- Detailed project case studies
-- Technology stack breakdown
-- Architecture explanations
-- Project screenshots
-- Demo links
-- GitHub links
-
-Example projects:
-- Disease Prediction ML System
-- Deepfake Detection Platform
-- DBMS Academic Project
-- Smart Home Automation Concept
-- Chrome Productivity Extension Concept
-
----
-
-### Certifications
-- Certification gallery
-- Organized certificate cards
-- Category grouping
-- Verification placeholders
-- Professional display layout
-
----
-
-### Resume Center
-- Downloadable resume
-- Recruiter-friendly access
-- Quick professional summary
-- Dedicated resume page
-
----
-
-### Blog Engine
-- Technical blog listing
-- Individual blog pages
-- MDX-ready architecture
-- Scalable content structure
-
----
-
-### Journey Storytelling
-Interactive timeline-based life/professional journey.
-
-Includes:
-- Education milestones
-- Project milestones
-- Career progression
-- Personal growth narrative
-
----
-
-### Achievements
-Dedicated achievement showcase:
-- Academic achievements
-- Leadership roles
-- Certifications
-- Competition participation
-- Milestones
-
----
-
-### Media Gallery
-Visual showcase:
-- Project screenshots
-- UI previews
-- Demo visuals
-- Technical showcase media
-
----
-
-### Recruiter View
-Dedicated recruiter experience with:
-- quick bio
-- best projects
-- skills summary
-- downloadable resume
-- contact CTA
-
----
-
-### Contact
-Professional contact section:
-- email contact form
-- social links
-- collaboration CTA
-
----
-
-## Tech Stack
-
-### Frontend
-- Next.js 15
+- Next.js 15 App Router
 - React 19
 - TypeScript
-- Tailwind CSS
-- shadcn/ui
+- Tailwind CSS v4
+- shadcn/ui source-owned primitives
 - Framer Motion
+- MDX content architecture
+- Vercel-compatible deployment
 
----
+## Getting Started
 
-### Styling / UI
-- Tailwind CSS
-- CSS variables
-- responsive utility architecture
-- design token structure
+```bash
+npm install
+npm run dev
+```
 
----
+Open `http://localhost:3000`.
 
-### Content
-- MDX
-- static structured content
-- scalable content architecture
+## Environment
 
----
+Create `.env.local` from `.env.example`.
 
-### Deployment
-- Vercel
+```bash
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+NEXT_PUBLIC_FORMSPREE_ENDPOINT=""
+```
 
----
+`NEXT_PUBLIC_FORMSPREE_ENDPOINT` is optional. If it is empty, the contact form opens a mailto draft.
 
-### Tooling
-- ESLint
-- Prettier
-- TypeScript strict mode
+## Quality Checks
 
----
+```bash
+npm run typecheck
+npm run lint
+npm run format:check
+npm run build
+```
 
-### Planned Future Integrations
-- Supabase
-- Clerk
-- OpenAI API
-- LangChain
-- GitHub API
-- PostHog analytics
+## Structure
 
----
+- `app/` routes, project/blog detail pages, metadata, sitemap, robots, OG image
+- `components/` layout, sections, reusable components, shadcn/ui primitives
+- `lib/` shared utilities, SEO, content helpers, V1 mock content constants
+- `hooks/` client hooks
+- `types/` shared TypeScript contracts
+- `styles/` shared animation constants
+- `content/` MDX-ready content
+- `public/` brand assets
 
-## Project Architecture
+## Deployment
 
-High-level structure:
+The app is ready for Vercel's Next.js detection. No custom `vercel.json` is required.
 
-```text
-Client Browser
-      |
-      v
-Next.js App Router Frontend
-      |
-      +------------------------+
-      |                        |
-      v                        v
-Static Content            API Routes (future)
-      |
-      v
-MDX / JSON Content Layer
-      |
-      v
-Vercel Deployment
+Default Vercel settings:
+
+- Framework preset: Next.js
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output directory: `.next`
+
+CLI deployment:
+
+```bash
+npm install
+npm run build
+npx vercel
+```
+
+Production deployment:
+
+```bash
+npx vercel --prod
+```
+
+Set `NEXT_PUBLIC_SITE_URL` to the deployed URL in Vercel project environment variables. Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` only if you want Formspree submissions instead of the mailto fallback.
+
+## V1 Features
+
+- Home, About, Skills, Projects, Project Detail, Certifications, Resume, Contact
+- Blog listing and blog detail pages
+- Journey, Gallery, Achievements, and Recruiter quick-view
+- Responsive sticky navigation, footer, dark/light theme, loading and error states
+- Static SEO metadata, OpenGraph image route, robots, and sitemap
