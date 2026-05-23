@@ -52,7 +52,7 @@ export function HomeHero() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <Link href="https://github.com/ManamoyB" target="_blank" rel="noopener noreferrer">
                   <ArrowRight />
                   View Code
                 </Link>

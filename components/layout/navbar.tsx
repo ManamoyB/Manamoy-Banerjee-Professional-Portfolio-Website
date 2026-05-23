@@ -41,7 +41,7 @@ export function Navbar() {
           <span className="hidden leading-none sm:block">
             <span className="block text-sm font-bold text-foreground">{siteConfig.name}</span>
             <span className="block text-xs text-muted-foreground">
-              AI product builder
+              Computer Engineer
             </span>
           </span>
         </Link>

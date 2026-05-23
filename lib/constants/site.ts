@@ -50,12 +50,12 @@ export const primaryNavItems = navigationItems.slice(0, 6);
 export const socialLinks: SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/ManamoyB",
     icon: Github,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/manamoyb/",
     icon: Linkedin,
   },
   {
