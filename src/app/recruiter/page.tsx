@@ -39,9 +39,9 @@ export default async function RecruiterPage() {
               <BriefcaseBusiness className="size-6 text-primary" />
               <h2 className="mt-5 text-xl font-semibold">Quick bio</h2>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                {settings.bio} Strong fit for teams looking for a junior builder who
-                can learn quickly, communicate clearly, and connect AI concepts with
-                usable product interfaces.
+                {settings.bio} Strong fit for teams looking for a junior builder who can
+                learn quickly, communicate clearly, and connect AI concepts with usable
+                product interfaces.
               </p>
               <div className="mt-6 flex flex-col gap-2">
                 <Button asChild>

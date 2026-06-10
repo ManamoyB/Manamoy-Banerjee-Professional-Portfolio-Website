@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function CinematicIntro() {
   const [isComplete, setIsComplete] = useState(false);
@@ -9,11 +9,11 @@ export function CinematicIntro() {
 
   useEffect(() => {
     // Check if user has seen intro before
-    const hasSeenIntro = localStorage.getItem('intro-seen') === 'true';
-    
+    const hasSeenIntro = localStorage.getItem("intro-seen") === "true";
+
     if (!hasSeenIntro) {
       setShowIntro(true);
-      localStorage.setItem('intro-seen', 'true');
+      localStorage.setItem("intro-seen", "true");
     } else {
       setIsComplete(true);
     }
@@ -71,13 +71,13 @@ export function CinematicIntro() {
               className="absolute inset-0 bg-gradient-cyan-violet opacity-20"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.15 }}
-              transition={{ duration: 2, ease: 'easeInOut' }}
+              transition={{ duration: 2, ease: "easeInOut" }}
             />
             <motion.div
               className="absolute -top-1/2 -left-1/2 w-full h-full rounded-full bg-gradient-glow-cyan opacity-10 blur-3xl"
               initial={{ opacity: 0, scale: 1 }}
               animate={{ opacity: 0.15, scale: 1.2 }}
-              transition={{ duration: 2, ease: 'easeInOut' }}
+              transition={{ duration: 2, ease: "easeInOut" }}
             />
           </div>
 
@@ -96,7 +96,7 @@ export function CinematicIntro() {
             {/* Name with letter stagger */}
             <div className="flex flex-col items-center gap-4">
               <div className="flex overflow-hidden">
-                {'MANAMOY'.split('').map((letter, i) => (
+                {"MANAMOY".split("").map((letter, i) => (
                   <motion.span
                     key={`first-${i}`}
                     custom={i}
@@ -110,7 +110,7 @@ export function CinematicIntro() {
                 ))}
               </div>
               <div className="flex overflow-hidden">
-                {'BANERJEE'.split('').map((letter, i) => (
+                {"BANERJEE".split("").map((letter, i) => (
                   <motion.span
                     key={`last-${i}`}
                     custom={i + 8}

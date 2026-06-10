@@ -29,7 +29,10 @@ export default async function AchievementsPage() {
       <SectionWrapper className="py-8">
         <div className="mx-auto grid max-w-4xl gap-4">
           {achievements.map((achievement) => (
-            <Card className="border-border/70 bg-card/80 backdrop-blur" key={achievement.title}>
+            <Card
+              className="border-border/70 bg-card/80 backdrop-blur"
+              key={achievement.title}
+            >
               <CardContent className="flex gap-4 p-5">
                 <Trophy className="mt-1 size-5 shrink-0 text-primary" />
                 <div>

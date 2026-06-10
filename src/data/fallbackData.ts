@@ -213,14 +213,16 @@ export const fallbackSkills: Skill[] = [
     category: "Frontend",
     proficiency: 88,
     signal: "Core",
-    description: "Component architecture, hooks, state patterns, and polished interfaces.",
+    description:
+      "Component architecture, hooks, state patterns, and polished interfaces.",
   },
   {
     name: "Next.js",
     category: "Frontend",
     proficiency: 86,
     signal: "Core",
-    description: "App Router, metadata, server components, and deployment-ready web apps.",
+    description:
+      "App Router, metadata, server components, and deployment-ready web apps.",
   },
   {
     name: "TypeScript",
@@ -234,7 +236,8 @@ export const fallbackSkills: Skill[] = [
     category: "Frontend",
     proficiency: 82,
     signal: "Strong",
-    description: "Responsive design systems, tokens, motion-friendly layouts, and UI polish.",
+    description:
+      "Responsive design systems, tokens, motion-friendly layouts, and UI polish.",
   },
   {
     name: "Node.js",
@@ -248,14 +251,16 @@ export const fallbackSkills: Skill[] = [
     category: "Backend",
     proficiency: 82,
     signal: "Core",
-    description: "Clean endpoints, validation boundaries, pagination, and integration design.",
+    description:
+      "Clean endpoints, validation boundaries, pagination, and integration design.",
   },
   {
     name: "Python",
     category: "Python",
     proficiency: 86,
     signal: "Core",
-    description: "AI prototyping, automation, data processing, and model experimentation.",
+    description:
+      "AI prototyping, automation, data processing, and model experimentation.",
   },
   {
     name: "Pandas",
@@ -276,7 +281,8 @@ export const fallbackSkills: Skill[] = [
     category: "AI/ML",
     proficiency: 78,
     signal: "Strong",
-    description: "Model workflows, feature thinking, evaluation, and practical ML systems.",
+    description:
+      "Model workflows, feature thinking, evaluation, and practical ML systems.",
   },
   {
     name: "LLM Apps",
@@ -304,7 +310,8 @@ export const fallbackSkills: Skill[] = [
     category: "Databases",
     proficiency: 74,
     signal: "Growing",
-    description: "Managed Postgres, auth-adjacent services, storage, and deployment workflows.",
+    description:
+      "Managed Postgres, auth-adjacent services, storage, and deployment workflows.",
   },
   {
     name: "Vercel",
@@ -332,7 +339,8 @@ export const fallbackSkills: Skill[] = [
     category: "Tools",
     proficiency: 68,
     signal: "Growing",
-    description: "Design translation, layout inspection, and product presentation polish.",
+    description:
+      "Design translation, layout inspection, and product presentation polish.",
   },
 ];
 
@@ -416,7 +424,8 @@ export const fallbackJourney: TimelineItem[] = [
     title: "BTech CSE at SRM University",
     period: "Academic foundation",
     eyebrow: "Academic foundation",
-    description: "Built core computer science foundations while maintaining a CGPA of 8.04.",
+    description:
+      "Built core computer science foundations while maintaining a CGPA of 8.04.",
   },
   {
     title: "Data and ML Exploration",

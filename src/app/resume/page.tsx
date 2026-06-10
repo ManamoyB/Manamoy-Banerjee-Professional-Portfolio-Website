@@ -74,7 +74,9 @@ export default async function ResumePage() {
                   </Button>
                 ) : (
                   <Button asChild variant="outline">
-                    <a href={`mailto:${settings.email}?subject=Resume request for Manamoy`}>
+                    <a
+                      href={`mailto:${settings.email}?subject=Resume request for Manamoy`}
+                    >
                       <Download />
                       Request PDF
                     </a>

@@ -23,8 +23,7 @@ export const theme = {
   },
   gradients: {
     brand: "linear-gradient(135deg, var(--primary), var(--accent))",
-    hero:
-      "radial-gradient(circle at top left, var(--brand-soft), transparent 32rem), radial-gradient(circle at 85% 10%, var(--accent-soft), transparent 26rem), var(--background)",
+    hero: "radial-gradient(circle at top left, var(--brand-soft), transparent 32rem), radial-gradient(circle at 85% 10%, var(--accent-soft), transparent 26rem), var(--background)",
   },
 };
 

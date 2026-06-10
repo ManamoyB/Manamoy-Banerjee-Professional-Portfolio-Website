@@ -22,7 +22,7 @@ type AdminTable =
 type Field = {
   name: string;
   label: string;
-  type?: "text" | "textarea" | "number" | "checkbox" | "array";
+  type?: "text" | "textarea" | "number" | "checkbox" | "array" | "file" | "url";
 };
 
 const tableFields: Record<AdminTable, Field[]> = {
@@ -38,21 +38,21 @@ const tableFields: Record<AdminTable, Field[]> = {
     { name: "leetcode", label: "LeetCode" },
     { name: "codeforces", label: "Codeforces" },
     { name: "hackerrank", label: "HackerRank" },
-    { name: "resume_url", label: "Resume URL" },
-    { name: "profile_image", label: "Profile Image URL" },
-    { name: "profile_banner", label: "Profile Banner URL" },
+    { name: "resume_url", label: "Resume URL", type: "url" },
+    { name: "profile_image", label: "Profile Image URL", type: "url" },
+    { name: "profile_banner", label: "Profile Banner URL", type: "url" },
     { name: "recruiter_message", label: "Recruiter Message", type: "textarea" },
   ],
   projects: [
     { name: "slug", label: "Slug" },
     { name: "title", label: "Title" },
     { name: "description", label: "Description", type: "textarea" },
-    { name: "github_url", label: "GitHub URL" },
-    { name: "live_url", label: "Live URL" },
+    { name: "github_url", label: "GitHub URL", type: "url" },
+    { name: "live_url", label: "Live URL", type: "url" },
     { name: "category", label: "Category" },
     { name: "tech_stack", label: "Tech Stack", type: "array" },
     { name: "achievements", label: "Achievements", type: "array" },
-    { name: "image_url", label: "Image URL" },
+    { name: "image_url", label: "Image URL", type: "url" },
     { name: "featured", label: "Featured", type: "checkbox" },
     { name: "start_date", label: "Start Date" },
     { name: "end_date", label: "End Date" },
@@ -62,8 +62,8 @@ const tableFields: Record<AdminTable, Field[]> = {
     { name: "issuer", label: "Issuer" },
     { name: "issue_date", label: "Issue Date" },
     { name: "credential_id", label: "Credential ID" },
-    { name: "credential_url", label: "Credential URL" },
-    { name: "image_url", label: "Image URL" },
+    { name: "credential_url", label: "Credential URL", type: "url" },
+    { name: "image_url", label: "Image URL", type: "url" },
     { name: "skills", label: "Skills", type: "array" },
   ],
   achievements: [
@@ -71,7 +71,7 @@ const tableFields: Record<AdminTable, Field[]> = {
     { name: "description", label: "Description", type: "textarea" },
     { name: "organization", label: "Organization" },
     { name: "date", label: "Date" },
-    { name: "image_url", label: "Image URL" },
+    { name: "image_url", label: "Image URL", type: "url" },
   ],
   skills: [
     { name: "name", label: "Name" },
@@ -99,12 +99,12 @@ const tableFields: Record<AdminTable, Field[]> = {
     { name: "excerpt", label: "Excerpt", type: "textarea" },
     { name: "content", label: "Content", type: "textarea" },
     { name: "tags", label: "Tags", type: "array" },
-    { name: "cover_image", label: "Cover Image URL" },
+    { name: "cover_image", label: "Cover Image URL", type: "url" },
     { name: "published", label: "Published", type: "checkbox" },
   ],
   resume_files: [
     { name: "title", label: "Title" },
-    { name: "file_url", label: "File URL" },
+    { name: "file_url", label: "File URL", type: "url" },
     { name: "version", label: "Version" },
     { name: "is_active", label: "Active", type: "checkbox" },
   ],
@@ -149,7 +149,9 @@ export function AdminDashboard() {
   const [session, setSession] = useState<Session | null>(null);
   const [table, setTable] = useState<AdminTable>("projects");
   const [rows, setRows] = useState<Record<string, unknown>[]>([]);
-  const [editingRow, setEditingRow] = useState<Record<string, unknown>>(emptyRecord("projects"));
+  const [editingRow, setEditingRow] = useState<Record<string, unknown>>(
+    emptyRecord("projects"),
+  );
   const [status, setStatus] = useState("Ready");
 
   const fields = useMemo(() => tableFields[table], [table]);
@@ -221,7 +223,10 @@ export function AdminDashboard() {
 
     const formData = new FormData(event.currentTarget);
     const payload = Object.fromEntries(
-      fields.map((field) => [field.name, normalizeValue(field, formData.get(field.name))]),
+      fields.map((field) => [
+        field.name,
+        normalizeValue(field, formData.get(field.name)),
+      ]),
     );
     const id = editingRow.id;
     const query = id
@@ -334,10 +339,14 @@ export function AdminDashboard() {
                     onClick={() => setEditingRow(row)}
                   >
                     <span className="block font-semibold">
-                      {String(row.title ?? row.name ?? row.institution ?? row.company ?? row.id)}
+                      {String(
+                        row.title ?? row.name ?? row.institution ?? row.company ?? row.id,
+                      )}
                     </span>
                     <span className="mt-1 block text-xs text-muted-foreground">
-                      {String(row.slug ?? row.category ?? row.created_at ?? "Editable record")}
+                      {String(
+                        row.slug ?? row.category ?? row.created_at ?? "Editable record",
+                      )}
                     </span>
                   </button>
                 ))
@@ -375,9 +384,21 @@ export function AdminDashboard() {
                   ) : (
                     <input
                       name={field.name}
-                      type={field.type === "number" ? "number" : "text"}
+                      type={
+                        field.type === "number"
+                          ? "number"
+                          : field.type === "url"
+                            ? "url"
+                            : "text"
+                      }
                       defaultValue={toInputValue(editingRow[field.name])}
-                      placeholder={field.type === "array" ? "Comma-separated values" : undefined}
+                      placeholder={
+                        field.type === "array"
+                          ? "Comma-separated values"
+                          : field.type === "url"
+                            ? "https://example.com"
+                            : undefined
+                      }
                       className="h-11 rounded-md border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
                     />
                   )}

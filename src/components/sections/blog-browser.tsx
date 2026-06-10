@@ -39,7 +39,10 @@ export function BlogBrowser({ posts }: { posts: BlogPost[] }) {
       {filtered.length ? (
         <div className="grid gap-5 lg:grid-cols-3">
           {filtered.map((post) => (
-            <Card className="h-full border-border/70 bg-card/80 backdrop-blur" key={post.slug}>
+            <Card
+              className="h-full border-border/70 bg-card/80 backdrop-blur"
+              key={post.slug}
+            >
               <CardContent className="flex h-full flex-col p-6">
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (

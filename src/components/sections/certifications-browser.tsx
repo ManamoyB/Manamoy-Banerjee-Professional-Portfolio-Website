@@ -40,7 +40,10 @@ export function CertificationsBrowser({
       {filtered.length ? (
         <div className="grid gap-5 md:grid-cols-2">
           {filtered.map((certificate) => (
-            <Card className="border-border/70 bg-card/80 backdrop-blur" key={certificate.title}>
+            <Card
+              className="border-border/70 bg-card/80 backdrop-blur"
+              key={certificate.title}
+            >
               <CardContent className="p-6">
                 <div className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <Award className="size-5" />

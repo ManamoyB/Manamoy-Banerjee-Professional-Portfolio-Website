@@ -26,7 +26,7 @@ export function SkillsExplorer({
   );
   const activeSkills = useMemo(
     () => skills.filter((skill) => skill.category === activeCategory),
-    [activeCategory],
+    [activeCategory, skills],
   );
   const average = Math.round(
     activeSkills.reduce((total, skill) => total + skill.proficiency, 0) /

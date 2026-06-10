@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     return createMetadata({ title: "Blog", path: "/blog" });
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     notFound();
@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
         </Button>
         <div className="flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
+          {post.tags.map((tag: string) => (
             <Badge variant="outline" key={tag}>
               {tag}
             </Badge>
@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted-foreground">{post.excerpt}</p>
         <div className="mt-10 space-y-6 border-t pt-10">
-          {post.body.map((paragraph) => (
+          {post.body.map((paragraph: string) => (
             <p className="text-base leading-8 text-muted-foreground" key={paragraph}>
               {paragraph}
             </p>

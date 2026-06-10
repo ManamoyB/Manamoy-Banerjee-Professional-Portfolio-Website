@@ -35,7 +35,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --shadow-glow-cyan: 0 0 40px oklch(0.75 0.25 200 / 0.3);
-  --shadow-glow-violet: 0 0 40px oklch(0.65 0.20 290 / 0.3);
+  --shadow-glow-violet: 0 0 40px oklch(0.65 0.2 290 / 0.3);
   --shadow-glow-cyan-lg: 0 0 80px oklch(0.75 0.25 200 / 0.25);
 }
 
@@ -108,7 +108,8 @@ html {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, var(--brand-soft), transparent 28rem), var(--background);
+  background:
+    linear-gradient(180deg, var(--brand-soft), transparent 28rem), var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
@@ -123,7 +124,8 @@ body {
 }
 
 .dark body {
-  background: linear-gradient(180deg, var(--brand-soft), transparent 30rem), var(--background);
+  background:
+    linear-gradient(180deg, var(--brand-soft), transparent 30rem), var(--background);
   background-attachment: fixed;
 }
 
@@ -155,7 +157,7 @@ body {
 }
 
 .bg-gradient-border::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

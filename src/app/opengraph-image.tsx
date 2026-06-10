@@ -46,9 +46,7 @@ export default function Image() {
         <div style={{ fontSize: 76, fontWeight: 800, letterSpacing: "-1px" }}>
           {siteConfig.name}
         </div>
-        <div style={{ fontSize: 34, color: openGraphTheme.muted }}>
-          {siteConfig.role}
-        </div>
+        <div style={{ fontSize: 34, color: openGraphTheme.muted }}>{siteConfig.role}</div>
       </div>
     </div>,
     size,

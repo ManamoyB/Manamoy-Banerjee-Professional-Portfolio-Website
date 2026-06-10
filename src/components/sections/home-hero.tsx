@@ -42,7 +42,9 @@ export function HomeHero({
           </FadeIn>
           <h1 className="max-w-5xl text-6xl font-bold tracking-tight text-balance sm:text-7xl lg:text-8xl leading-none">
             <AnimatedText text="Building intelligent products with" />{" "}
-            <span className="bg-gradient-cyan-violet bg-clip-text text-transparent">full-stack precision</span>
+            <span className="bg-gradient-cyan-violet bg-clip-text text-transparent">
+              full-stack precision
+            </span>
             <AnimatedText text="." />
           </h1>
           <FadeIn delay={0.2}>
@@ -66,10 +68,17 @@ export function HomeHero({
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href={settings.github ?? "/contact"} target="_blank" rel="noopener noreferrer">
-                  <ArrowRight />
-                  View Code
-                </Link>
+                {settings.github ? (
+                  <a href={settings.github} target="_blank" rel="noopener noreferrer">
+                    <ArrowRight />
+                    View Code
+                  </a>
+                ) : (
+                  <Link href="/contact">
+                    <ArrowRight />
+                    View Code
+                  </Link>
+                )}
               </Button>
             </div>
           </FadeIn>
@@ -104,7 +113,9 @@ export function HomeHero({
             </div>
             <div className="absolute inset-x-6 bottom-6 rounded-xl border border-white/20 bg-background/60 p-4 shadow-xl backdrop-blur-2xl">
               <p className="text-sm font-bold text-foreground">{settings.name}</p>
-              <p className="mt-1 text-xs text-muted-foreground font-medium">{settings.headline}</p>
+              <p className="mt-1 text-xs text-muted-foreground font-medium">
+                {settings.headline}
+              </p>
             </div>
           </div>
         </FadeIn>

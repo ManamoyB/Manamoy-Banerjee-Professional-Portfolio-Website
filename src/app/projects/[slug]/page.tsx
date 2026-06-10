@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
 
   if (!project) {
     return createMetadata({ title: "Project", path: "/projects" });
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
 
   if (!project) {
     notFound();
@@ -75,7 +75,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <CardContent className="p-5">
               <p className="text-sm font-semibold">Tech stack</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {project.techStack.map((tech) => (
+                {project.techStack.map((tech: string) => (
                   <span className="rounded-md bg-muted px-2.5 py-1 text-xs" key={tech}>
                     {tech}
                   </span>
@@ -84,11 +84,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <div className="mt-6 flex flex-col gap-2">
                 <Button asChild variant="outline">
                   {isUsableExternalLink(project.githubUrl) ? (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github />
                       GitHub
                     </a>

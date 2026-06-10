@@ -40,10 +40,10 @@ export function Navbar() {
             M
           </span>
           <span className="hidden leading-none sm:block">
-            <span className="block text-sm font-bold text-foreground">{siteConfig.name}</span>
-            <span className="block text-xs text-muted-foreground">
-              Computer Engineer
+            <span className="block text-sm font-bold text-foreground">
+              {siteConfig.name}
             </span>
+            <span className="block text-xs text-muted-foreground">Computer Engineer</span>
           </span>
         </Link>
 

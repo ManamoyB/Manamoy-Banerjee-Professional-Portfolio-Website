@@ -40,7 +40,10 @@ export function ContactForm({ email }: { email: string }) {
 
     if (!endpoint) {
       const subject = encodeURIComponent(
-        String(formData.get("subject") ?? `Portfolio inquiry from ${formData.get("name") ?? "Visitor"}`),
+        String(
+          formData.get("subject") ??
+            `Portfolio inquiry from ${formData.get("name") ?? "Visitor"}`,
+        ),
       );
       const body = encodeURIComponent(
         `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\nCompany: ${formData.get("company")}\n\n${formData.get("message")}`,

@@ -29,7 +29,9 @@ function asNumber(value: unknown, fallback = 0) {
 }
 
 function asArray(value: unknown) {
-  return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string")
+    : [];
 }
 
 async function selectRows(table: string) {
@@ -102,7 +104,9 @@ function mapProjects(rows: Row[] | null): PortfolioProject[] {
       liveUrl: asString(row.live_url, fallback.liveUrl),
       category: asString(row.category, fallback.category),
       status: fallback.status,
-      techStack: asArray(row.tech_stack).length ? asArray(row.tech_stack) : fallback.techStack,
+      techStack: asArray(row.tech_stack).length
+        ? asArray(row.tech_stack)
+        : fallback.techStack,
       achievements: asArray(row.achievements).length
         ? asArray(row.achievements)
         : fallback.achievements,

@@ -31,22 +31,32 @@ export function Footer() {
               {siteConfig.description}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {socialLinks.filter((link) => link.href).map((link) => {
-                const Icon = link.icon;
+              {socialLinks
+                .filter((link) => link.href)
+                .map((link) => {
+                  const Icon = link.icon;
 
-                return (
-                  <Button asChild variant="glass" size="icon" key={link.label} className="hover:border-cyan/50">
-                    <a
-                      href={link.href}
-                      aria-label={link.label}
-                      target={isExternalHref(link.href) ? "_blank" : undefined}
-                      rel={isExternalHref(link.href) ? "noopener noreferrer" : undefined}
+                  return (
+                    <Button
+                      asChild
+                      variant="glass"
+                      size="icon"
+                      key={link.label}
+                      className="hover:border-cyan/50"
                     >
-                      <Icon />
-                    </a>
-                  </Button>
-                );
-              })}
+                      <a
+                        href={link.href}
+                        aria-label={link.label}
+                        target={isExternalHref(link.href) ? "_blank" : undefined}
+                        rel={
+                          isExternalHref(link.href) ? "noopener noreferrer" : undefined
+                        }
+                      >
+                        <Icon />
+                      </a>
+                    </Button>
+                  );
+                })}
             </div>
           </div>
 

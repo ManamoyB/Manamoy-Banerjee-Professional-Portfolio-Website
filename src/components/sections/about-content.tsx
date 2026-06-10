@@ -25,7 +25,7 @@ export function AboutContent({
   const educationTimeline: TimelineItem[] = education.map((item) => ({
     eyebrow: item.degree,
     title: item.institution,
-    period: item.cgpa ? `CGPA ${item.cgpa}` : item.endDate ?? "Ongoing",
+    period: item.cgpa ? `CGPA ${item.cgpa}` : (item.endDate ?? "Ongoing"),
     description: item.description,
   }));
 
@@ -44,18 +44,23 @@ export function AboutContent({
           <FadeIn>
             <Card className="h-full border-cyan/20 bg-card/50 backdrop-blur hover:border-cyan/40 hover:bg-card/70 transition-all duration-300">
               <CardContent className="p-8">
-                <Badge variant="outline" className="border-cyan/30 text-cyan">Biography</Badge>
+                <Badge variant="outline" className="border-cyan/30 text-cyan">
+                  Biography
+                </Badge>
                 <h2 className="mt-6 text-4xl font-bold tracking-tight leading-tight">
                   Building a career at the intersection of{" "}
-                  <span className="bg-gradient-cyan-violet bg-clip-text text-transparent">AI, software, and data</span>.
+                  <span className="bg-gradient-cyan-violet bg-clip-text text-transparent">
+                    AI, software, and data
+                  </span>
+                  .
                 </h2>
                 <div className="mt-5 space-y-4 leading-8 text-muted-foreground">
                   <p>
-                    {settings.name} is a software engineer and AI-focused builder from {settings.location},
-                    developing the ability to move from product ambiguity to deployed
-                    systems. His work centers on full-stack applications, data-informed
-                    thinking, and intelligent features that are useful in the hands of
-                    real people.
+                    {settings.name} is a software engineer and AI-focused builder from{" "}
+                    {settings.location}, developing the ability to move from product
+                    ambiguity to deployed systems. His work centers on full-stack
+                    applications, data-informed thinking, and intelligent features that
+                    are useful in the hands of real people.
                   </p>
                   <p>
                     This platform is designed as a long-term professional surface:
