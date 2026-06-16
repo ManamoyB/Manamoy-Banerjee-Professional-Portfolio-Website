@@ -78,8 +78,7 @@ export function Footer() {
           <div>
             <h2 className="text-sm font-bold">Contact</h2>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Open to thoughtful engineering opportunities, AI product work, and
-              product-minded collaborations.
+              {siteConfig.recruiterMessage}
             </p>
             <Button asChild variant="gradient" className="mt-5 w-fit">
               <Link href="/contact">

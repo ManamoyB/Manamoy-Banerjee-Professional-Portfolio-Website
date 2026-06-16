@@ -13,17 +13,21 @@ import type {
   SkillCategory,
   TimelineItem,
 } from "@/types";
+import { siteConfig } from "@/config/site";
 
 export const fallbackSettings: PortfolioSettings = {
-  name: "Manamoy",
-  headline: "AI Engineer | Full Stack Developer | Data Science Enthusiast",
-  bio: "AI-minded full-stack developer building practical software, ML systems, and polished product experiences.",
-  email: "hello@manamoy.dev",
-  location: "India",
-  github: "https://github.com/ManamoyB",
-  linkedin: "https://www.linkedin.com/in/manamoyb/",
-  recruiterMessage:
-    "Open to thoughtful engineering opportunities, AI product work, and product-minded collaborations.",
+  name: siteConfig.name,
+  headline: siteConfig.role,
+  bio: siteConfig.bio,
+  email: siteConfig.email,
+  location: siteConfig.location,
+  github: siteConfig.github,
+  linkedin: siteConfig.linkedin,
+  leetcode: siteConfig.leetcode,
+  codeforces: siteConfig.codeforces,
+  hackerrank: siteConfig.hackerrank,
+  resumeUrl: siteConfig.resumeUrl,
+  recruiterMessage: siteConfig.recruiterMessage,
 };
 
 export const fallbackProjects: PortfolioProject[] = [

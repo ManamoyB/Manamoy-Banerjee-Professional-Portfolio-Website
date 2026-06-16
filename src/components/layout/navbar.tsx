@@ -43,7 +43,7 @@ export function Navbar() {
             <span className="block text-sm font-bold text-foreground">
               {siteConfig.name}
             </span>
-            <span className="block text-xs text-muted-foreground">Computer Engineer</span>
+            <span className="block text-xs text-muted-foreground">{siteConfig.role}</span>
           </span>
         </Link>
 

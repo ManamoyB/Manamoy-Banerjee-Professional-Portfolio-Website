@@ -7,12 +7,12 @@ import { siteConfig } from "@/config/site";
 export const socialLinks: SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com/ManamoyB",
+    href: siteConfig.github,
     icon: Github,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/manamoyb/",
+    href: siteConfig.linkedin,
     icon: Linkedin,
   },
   {
@@ -22,7 +22,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "LeetCode",
-    href: "",
+    href: siteConfig.leetcode,
     icon: Code2,
   },
   {
