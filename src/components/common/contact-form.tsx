@@ -6,7 +6,6 @@ import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { analyticsEvents } from "@/config/analytics";
 import { trackEvent } from "@/lib/analytics";
-import { getSupabaseBrowserClient } from "@/lib/supabase";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -21,23 +20,6 @@ export function ContactForm({ email }: { email: string }) {
 
     setStatus("sending");
 
-    const supabase = getSupabaseBrowserClient();
-    if (supabase) {
-      const { error } = await supabase.from("contact_messages").insert({
-        name: String(formData.get("name") ?? ""),
-        email: String(formData.get("email") ?? ""),
-        subject: String(formData.get("subject") ?? "Portfolio inquiry"),
-        message: String(formData.get("message") ?? ""),
-      });
-
-      if (!error) {
-        form.reset();
-        setStatus("sent");
-        trackEvent(analyticsEvents.contactSubmission, { channel: "supabase" });
-        return;
-      }
-    }
-
     if (!endpoint) {
       const subject = encodeURIComponent(
         String(
@@ -49,6 +31,8 @@ export function ContactForm({ email }: { email: string }) {
         `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\nCompany: ${formData.get("company")}\n\n${formData.get("message")}`,
       );
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      setStatus("idle");
+      trackEvent(analyticsEvents.contactSubmission, { channel: "mailto" });
       return;
     }
 
