@@ -1,36 +1,36 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import { AppShell } from "@/components/layout/app-shell";
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { openGraphTheme } from "@/config/theme";
-import { createMetadata } from "@/lib/seo";
+import { Footer } from "@/components/footer";
+import { IntroAnimation } from "@/components/intro-animation";
+import { Navbar } from "@/components/navbar";
+import { profile, siteConfig } from "@/data/portfolio";
 
-import "./globals.css";
+import "../styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-export const metadata: Metadata = createMetadata();
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${profile.displayName} | ${profile.role}`,
+    template: `%s | ${profile.displayName}`,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: profile.displayName }],
+  openGraph: {
+    title: `${profile.displayName} | ${profile.role}`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    type: "website",
+  },
+};
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: openGraphTheme.foreground },
-    { media: "(prefers-color-scheme: dark)", color: openGraphTheme.background },
+    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#07111f" },
   ],
 };
 
@@ -40,25 +40,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <ThemeProvider>
-          <TooltipProvider>
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow-lg"
-            >
-              Skip to main content
-            </a>
-            <AppShell>{children}</AppShell>
-            <Analytics />
-            <SpeedInsights />
-          </TooltipProvider>
-        </ThemeProvider>
+        <IntroAnimation />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
+        <Navbar />
+        <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );
