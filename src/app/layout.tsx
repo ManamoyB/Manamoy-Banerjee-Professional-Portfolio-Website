@@ -5,7 +5,7 @@ import { IntroAnimation } from "@/components/intro-animation";
 import { Navbar } from "@/components/navbar";
 import { profile, siteConfig } from "@/data/portfolio";
 
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
