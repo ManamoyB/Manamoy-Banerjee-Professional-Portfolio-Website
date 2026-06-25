@@ -66,6 +66,7 @@ import { AchievementsPage } from './components/AchievementsPage';
 import { GalleryPage } from './components/GalleryPage';
 import { RecruiterPage } from './components/RecruiterPage';
 import { CurrentFocus } from './components/CurrentFocus';
+import { AdminPage } from './components/AdminPage';
 
 const MainAppContent: React.FC = () => {
   const { theme, toggleTheme, colors } = useTheme();
@@ -421,6 +422,45 @@ const MainAppContent: React.FC = () => {
                       <span>Contact Me</span>
                     </button>
                   </div>
+
+                  {/* Modern Glassy Skills Badge Row - Added in a cool manner below Explore Projects sections */}
+                  <div className="pt-8 space-y-3" id="home-core-technologies">
+                    <div className="flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold">Key Technologies</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2.5">
+                      {/* AI Engine */}
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-900/40 dark:bg-slate-950/45 text-white text-[11px] font-semibold font-mono rounded-xl border border-indigo-500/20 shadow-sm hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all duration-300 group hover:-translate-y-0.5">
+                        <Atom className="w-3.5 h-3.5 text-cyan-400 group-hover:rotate-180 transition-transform duration-1000" />
+                        <span className="text-slate-300 group-hover:text-white transition-colors">AI Engine</span>
+                      </div>
+                      
+                      {/* Python */}
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-900/40 dark:bg-slate-950/45 text-white text-[11px] font-semibold font-mono rounded-xl border border-yellow-500/20 shadow-sm hover:border-yellow-500/50 hover:bg-yellow-500/5 transition-all duration-300 group hover:-translate-y-0.5">
+                        <Terminal className="w-3.5 h-3.5 text-yellow-500" />
+                        <span className="text-slate-300 group-hover:text-white transition-colors">Python</span>
+                      </div>
+
+                      {/* Machine Learning */}
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-900/40 dark:bg-slate-950/45 text-white text-[11px] font-semibold font-mono rounded-xl border border-purple-500/20 shadow-sm hover:border-purple-500/50 hover:bg-purple-500/5 transition-all duration-300 group hover:-translate-y-0.5">
+                        <Cpu className="w-3.5 h-3.5 text-purple-400 group-hover:scale-110 transition-transform" />
+                        <span className="text-slate-300 group-hover:text-white transition-colors">Machine Learning</span>
+                      </div>
+
+                      {/* Data Analytics */}
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-900/40 dark:bg-slate-950/45 text-white text-[11px] font-semibold font-mono rounded-xl border border-emerald-500/20 shadow-sm hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all duration-300 group hover:-translate-y-0.5">
+                        <BarChart3 className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-x-110 transition-transform" />
+                        <span className="text-slate-300 group-hover:text-white transition-colors">Data Analytics</span>
+                      </div>
+
+                      {/* Deep Learning */}
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-900/40 dark:bg-slate-950/45 text-white text-[11px] font-semibold font-mono rounded-xl border border-pink-500/20 shadow-sm hover:border-pink-500/50 hover:bg-pink-500/5 transition-all duration-300 group hover:-translate-y-0.5">
+                        <Sparkles className="w-3.5 h-3.5 text-pink-400" />
+                        <span className="text-slate-300 group-hover:text-white transition-colors">Deep Learning</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Right Interactive/Professional Visual with floating cards */}
@@ -455,37 +495,6 @@ const MainAppContent: React.FC = () => {
                     {/* Active predictive system / portrait identifier badge */}
                     <div className="relative z-15 text-center -mt-2 bg-slate-950/90 backdrop-blur-md px-4 py-1 border border-indigo-500/30 w-fit mx-auto rounded-full shadow-lg">
                       <span className="text-[9px] font-mono uppercase tracking-widest text-indigo-400 font-bold block">Developer Active Session</span>
-                    </div>
-
-                    {/* Highly polished FLOATING SKILL BADGES */}
-                    {/* Badge 1: AI */}
-                    <div className="absolute top-10 left-4 z-20 flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 text-white text-[10px] font-bold font-mono rounded-xl border border-indigo-500/40 shadow-lg animate-[bounce_4s_ease-in-out_infinite]">
-                      <Atom className="w-3.5 h-3.5 text-cyan-400 rotate-45" />
-                      <span>AI Engine</span>
-                    </div>
-
-                    {/* Badge 2: Python */}
-                    <div className="absolute top-16 right-4 z-20 flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 text-white text-[10px] font-bold font-mono rounded-xl border border-yellow-500/40 shadow-lg animate-[bounce_5s_ease-in-out_infinite_1s]">
-                      <Terminal className="w-3.5 h-3.5 text-yellow-500" />
-                      <span>Python</span>
-                    </div>
-
-                    {/* Badge 3: Machine Learning */}
-                    <div className="absolute bottom-16 left-2 z-20 flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 text-white text-[10px] font-bold font-mono rounded-xl border border-purple-500/40 shadow-lg animate-[bounce_6s_ease-in-out_infinite_2s]">
-                      <Cpu className="w-3.5 h-3.5 text-purple-400" />
-                      <span>Machine Learning</span>
-                    </div>
-
-                    {/* Badge 4: Data Analytics */}
-                    <div className="absolute bottom-12 right-2 z-20 flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 text-white text-[10px] font-bold font-mono rounded-xl border border-emerald-500/40 shadow-lg animate-[bounce_4.5s_ease-in-out_infinite_0.5s]">
-                      <BarChart3 className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Data Analytics</span>
-                    </div>
-
-                    {/* Badge 5: Deep Learning */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-16 z-20 flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 text-white text-[10px] font-bold font-mono rounded-xl border border-pink-500/40 shadow-lg animate-[bounce_5.5s_ease-in-out_infinite_1.5s]">
-                      <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-                      <span>Deep Learning</span>
                     </div>
                   </div>
                 </div>
@@ -988,37 +997,43 @@ const MainAppContent: React.FC = () => {
 
               {/* ================= SECTION 1: WHO AM I ================= */}
               <section className="space-y-4">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-indigo-400 font-bold block">Section 01 / Biography</span>
-                <h3 className="text-2xl font-bold tracking-tight" style={{ color: colors.text }}>Who Am I</h3>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-indigo-600 dark:text-indigo-400 font-extrabold block">Section 01 / Biography</span>
+                <h3 className="text-2xl font-black tracking-tight" style={{ color: colors.text }}>Who Am I</h3>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                   <div className="lg:col-span-7 space-y-4">
                     <div className="p-6 md:p-8 rounded-2xl border backdrop-blur-sm space-y-6"
                       style={{ backgroundColor: colors.cardBg, borderColor: colors.borderColor }}
                     >
-                      <p className="text-xs sm:text-sm leading-relaxed text-slate-300 dark:text-slate-300 font-sans">
-                        My technical odyssey began not with mere code, but with a profound wonder about how digital architectures transform chaotic datasets into streamlined, intelligent actions. As a Computer Science undergraduate with a core focus on Artificial Intelligence and Machine Learning, I realized very early that true computer science craft comes from deep fundamentals rather than utilizing black-box wrappers.
+                      <p className="text-sm font-semibold leading-relaxed" style={{ color: colors.text }}>
+                        My technical odyssey began not with mere code, but with a wonder about how digital architectures transform chaotic datasets into streamlined, intelligent actions. As a Computer Science undergraduate with a core focus on Artificial Intelligence and Machine Learning, I realized early that true computer science craft comes from deep fundamentals rather than utilizing black-box wrappers.
                       </p>
-                      <p className="text-xs sm:text-sm leading-relaxed text-slate-300 dark:text-slate-300 font-sans">
+                      <p className="text-sm font-semibold leading-relaxed" style={{ color: colors.text }}>
                         At SRM Institute of Science and Technology, I have structured my academic and voluntary efforts to master PyTorch, deep machine learning pipeline mechanics, semantic data analytics, and high-performance system engineering. Whether designing Dual-Stream CNN models to intercept deepfakes or engineering BioBERT-powered semantic search graphs for clinical recommendations, I strive to bridge the gap between abstract academic research and scalable, consumer-grade software systems.
                       </p>
                     </div>
                   </div>
 
                   <div className="lg:col-span-5 flex justify-center py-4 lg:py-0">
-                    <div className="bg-slate-900 border border-slate-800 p-4 rounded-3xl shadow-2xl relative group rotate-[-2deg] hover:rotate-[0deg] transition-all duration-300 w-full max-w-sm">
+                    <div 
+                      className="border p-4 rounded-3xl shadow-2xl relative group rotate-[-2deg] hover:rotate-[0deg] transition-all duration-300 w-full max-w-sm"
+                      style={{ 
+                        backgroundColor: colors.cardBg, 
+                        borderColor: colors.borderColor 
+                      }}
+                    >
                       {/* Paper tape element top center */}
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-slate-500/10 border border-dashed border-slate-500/30 backdrop-blur-xs z-10" />
                       
-                      <div className="w-full h-80 rounded-2xl overflow-hidden mb-3.5 bg-slate-950 relative">
+                      <div className="w-full h-80 rounded-2xl overflow-hidden mb-3.5 relative" style={{ backgroundColor: theme === 'aurora' ? '#020617' : '#f8fafc' }}>
                         <img 
                           src="/src/assets/images/casual_about_1781818883335.jpg" 
                           alt="Manamoy Banerjee - Casual Bio Pic"
-                          className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                          className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-500"
                           referrerPolicy="no-referrer"
                         />
                       </div>
-                      <div className="text-center font-mono italic text-[10px] text-slate-400 flex items-center justify-center gap-1.5 pt-1">
+                      <div className="text-center font-mono italic text-[11px] font-bold flex items-center justify-center gap-1.5 pt-1" style={{ color: colors.mutedText }}>
                         <span>📸 Out in nature, brainstorming system ideas</span>
                       </div>
                     </div>
@@ -1434,17 +1449,23 @@ const MainAppContent: React.FC = () => {
             <section className="space-y-8 py-4 animate-fade-in" id="skills-section">
               
               {/* Premium Skills Hero Banner */}
-              <div className="rounded-3xl border p-8 relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-950 to-slate-950 shadow-xl" style={{ borderColor: colors.borderColor }}>
+              <div 
+                className="rounded-3xl border p-8 relative overflow-hidden shadow-xl transition-colors duration-300" 
+                style={{ 
+                  backgroundColor: colors.cardBg,
+                  borderColor: colors.borderColor 
+                }}
+              >
                 <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-[80px] bg-indigo-500/10 pointer-events-none -translate-y-5" />
                 <div className="relative z-10 space-y-3">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[9px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/20 text-indigo-400">
-                    <Code className="w-3.5 h-3.5" />
-                    <span>Vectorized Proficiencies</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/30 text-indigo-600 dark:text-indigo-400">
+                    <Code className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+                    <span className="font-extrabold text-[10px]">Vectorized Proficiencies</span>
                   </span>
                   <h2 className="text-3xl sm:text-5xl font-black tracking-tight" style={{ color: colors.text }}>
                     Skills & Technologies
                   </h2>
-                  <p className="text-xs sm:text-sm max-w-xl text-slate-400 font-sans">
+                  <p className="text-sm max-w-xl font-semibold leading-relaxed" style={{ color: colors.mutedText }}>
                     An interactive, real-time map of computational capabilities, programming stacks, database designs, and machine learning infrastructure metrics.
                   </p>
                 </div>
@@ -1468,10 +1489,10 @@ const MainAppContent: React.FC = () => {
                       <button
                         key={tab.id}
                         onClick={() => setActiveSkillCategory(tab.id as any)}
-                        className={`px-3 py-1.5 rounded-full border text-xxs font-mono font-bold transition-all cursor-pointer ${
+                        className={`px-3 py-1.5 rounded-full border text-xs font-mono font-bold transition-all cursor-pointer ${
                           isSelected 
                             ? 'bg-indigo-500 border-indigo-500 text-white' 
-                            : 'opacity-60 hover:opacity-100'
+                            : 'opacity-70 hover:opacity-100 hover:scale-102'
                         }`}
                         style={{ 
                           borderColor: isSelected ? colors.primary : colors.borderColor,
@@ -1486,7 +1507,7 @@ const MainAppContent: React.FC = () => {
 
                 {/* Local search bar */}
                 <div className="relative w-full sm:w-64">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 opacity-40 text-indigo-400 font-mono text-xs">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase font-black tracking-wider">
                     SYS.grep
                   </span>
                   <input 
@@ -1494,8 +1515,12 @@ const MainAppContent: React.FC = () => {
                     placeholder="Search technologies..."
                     value={skillSearchQuery}
                     onChange={(e) => setSkillSearchQuery(e.target.value)}
-                    className="w-full pl-16 pr-4 py-2 border text-xxs font-mono rounded-full focus:outline-none focus:border-indigo-500 bg-slate-900"
-                    style={{ borderColor: colors.borderColor, color: colors.text }}
+                    className="w-full pl-22 pr-4 py-2.5 border text-xs sm:text-sm font-mono rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500/25 shadow-xs"
+                    style={{ 
+                      backgroundColor: colors.cardBg, 
+                      borderColor: colors.borderColor, 
+                      color: colors.text 
+                    }}
                   />
                 </div>
 
@@ -1526,7 +1551,7 @@ const MainAppContent: React.FC = () => {
 
                       return (
                         <div key={sec.id} className="space-y-4 animate-fade-in">
-                          <span className="text-[10px] font-mono uppercase tracking-widest text-indigo-400 font-bold block">
+                          <span className="text-xs font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 block font-mono">
                             {sec.label} Matrix
                           </span>
 
@@ -1534,7 +1559,7 @@ const MainAppContent: React.FC = () => {
                             {filteredInSec.map(sk => (
                               <div
                                 key={sk.name}
-                                className="p-4 rounded-xl border flex flex-col justify-between space-y-3 relative overflow-hidden group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                                className="p-4 rounded-xl border flex flex-col justify-between space-y-3.5 relative overflow-hidden group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
                                 style={{
                                   backgroundColor: colors.cardBg,
                                   borderColor: colors.borderColor
@@ -1545,21 +1570,21 @@ const MainAppContent: React.FC = () => {
                                 
                                 <div className="flex justify-between items-center">
                                   <div className="flex items-center gap-2.5">
-                                    <span className="text-indigo-400 font-mono text-xxs bg-indigo-500/5 px-2 py-0.5 rounded border border-indigo-500/10">
+                                    <span className="text-indigo-600 dark:text-indigo-400 font-mono text-xxs font-black bg-indigo-500/5 px-2.5 py-0.5 rounded border border-indigo-500/15">
                                       {sk.iconType}
                                     </span>
-                                    <h4 className="text-xs font-bold leading-none" style={{ color: colors.text }}>
+                                    <h4 className="text-sm font-black tracking-tight leading-none" style={{ color: colors.text }}>
                                       {sk.name}
                                     </h4>
                                   </div>
-                                  <span className="text-xxs font-mono font-bold" style={{ color: colors.primary }}>
+                                  <span className="text-xs font-mono font-black" style={{ color: colors.primary }}>
                                     {sk.proficiency}%
                                   </span>
                                 </div>
 
-                                <div className="space-y-1.5">
+                                <div className="space-y-2">
                                   {/* Custom progress level row */}
-                                  <div className="w-full h-1.5 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-800">
+                                  <div className="w-full h-2 rounded-full overflow-hidden bg-slate-300/40 dark:bg-slate-800 border border-black/5 dark:border-white/5">
                                     <div
                                       className="h-full rounded-full transition-all duration-1000 ease-out origin-left scale-x-0 group-hover:scale-x-100"
                                       style={{
@@ -1571,9 +1596,9 @@ const MainAppContent: React.FC = () => {
                                   </div>
                                   
                                   {/* Metric details label */}
-                                  <div className="flex justify-between items-center text-[9px] font-mono opacity-50">
+                                  <div className="flex justify-between items-center text-[10px] font-mono font-bold" style={{ color: colors.mutedText }}>
                                     <span>PROFICIENCY INDEX</span>
-                                    <span className="text-indigo-400 uppercase font-bold">
+                                    <span className="text-indigo-600 dark:text-indigo-400 uppercase font-black">
                                       {sk.proficiency >= 90 ? 'Expert' : sk.proficiency >= 85 ? 'Highly Advanced' : 'Competent'}
                                     </span>
                                   </div>
@@ -1704,36 +1729,48 @@ const MainAppContent: React.FC = () => {
             </section>
           )}
 
+          {/* SECTION: ADMIN CONSOLE (Protected with Admin credentials panel) */}
+          {activeSection === 'admin' && (
+            <AdminPage 
+              colors={colors} 
+              theme={theme} 
+              onNavigateHome={() => {
+                setActiveSection('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }} 
+            />
+          )}
+
         </div>
       </main>
 
       {/* Modern Responsive Sitemap & Roadmap Footer */}
-      <footer className="w-full mt-16 border-t backdrop-blur-md" style={{ borderColor: colors.borderColor, backgroundColor: theme === 'aurora' ? 'rgba(4, 6, 12, 0.4)' : 'rgba(248, 250, 252, 0.4)' }}>
+      <footer className="w-full mt-16 border-t backdrop-blur-md" style={{ borderColor: colors.borderColor, backgroundColor: theme === 'aurora' ? 'rgba(4, 6, 12, 0.4)' : 'rgba(255, 255, 255, 0.5)' }}>
         <div className="max-w-7xl mx-auto px-6 py-12">
           {/* Top Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
             {/* Column 1: Core Details */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <div 
-                  className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs border"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm border shadow-xs"
                   style={{
-                    backgroundColor: theme === 'aurora' ? 'rgba(110, 86, 255, 0.1)' : 'rgba(255, 107, 53, 0.1)',
+                    backgroundColor: theme === 'aurora' ? 'rgba(110, 86, 255, 0.1)' : 'rgba(223, 77, 26, 0.1)',
                     borderColor: colors.primary,
                     color: colors.primary
                   }}
                 >
                   MB
                 </div>
-                <h3 className="text-sm font-extrabold tracking-tight" style={{ color: colors.text }}>
+                <h3 className="text-base font-black tracking-tight" style={{ color: colors.text }}>
                   {personalDetails.name}
                 </h3>
               </div>
-              <p className="text-xxs leading-relaxed opacity-75" style={{ color: colors.mutedText }}>
+              <p className="text-xs font-semibold leading-relaxed" style={{ color: colors.mutedText }}>
                 {personalDetails.title}
               </p>
-              <div className="flex items-center gap-2.5 text-xxs font-mono" style={{ color: colors.mutedText }}>
-                <MapPin className="w-3.5 h-3.5 text-emerald-400" style={{ color: colors.accent }} />
+              <div className="flex items-center gap-2.5 text-xs font-mono font-bold" style={{ color: colors.mutedText }}>
+                <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400" style={{ color: colors.accent }} />
                 <span>{personalDetails.socialLinks?.location || 'Global • Remote'}</span>
               </div>
               {/* Dynamic Social Links inside the footer */}
@@ -1743,11 +1780,11 @@ const MainAppContent: React.FC = () => {
                     href={personalDetails.socialLinks.github} 
                     target="_blank" 
                     rel="referrer" 
-                    className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 transition-all border shrink-0"
+                    className="p-2 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-850 hover:scale-105 transition-all border shrink-0"
                     style={{ borderColor: colors.borderColor }}
                     title="GitHub Profile"
                   >
-                    <Github className="w-3.5 h-3.5" style={{ color: colors.text }} />
+                    <Github className="w-4 h-4" style={{ color: colors.text }} />
                   </a>
                 )}
                 {personalDetails.socialLinks?.linkedin && (
@@ -1755,30 +1792,30 @@ const MainAppContent: React.FC = () => {
                     href={personalDetails.socialLinks.linkedin} 
                     target="_blank" 
                     rel="referrer" 
-                    className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 transition-all border shrink-0"
+                    className="p-2 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-850 hover:scale-105 transition-all border shrink-0"
                     style={{ borderColor: colors.borderColor }}
                     title="LinkedIn Profile"
                   >
-                    <Linkedin className="w-3.5 h-3.5" style={{ color: colors.text }} />
+                    <Linkedin className="w-4 h-4" style={{ color: colors.text }} />
                   </a>
                 )}
                 {personalDetails.socialLinks?.email && (
                   <a 
                     href={`mailto:${personalDetails.socialLinks.email}`} 
-                    className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 transition-all border shrink-0"
+                    className="p-2 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-850 hover:scale-105 transition-all border shrink-0"
                     style={{ borderColor: colors.borderColor }}
                     title="Direct Email"
                   >
-                    <Mail className="w-3.5 h-3.5" style={{ color: colors.text }} />
+                    <Mail className="w-4 h-4" style={{ color: colors.text }} />
                   </a>
                 )}
               </div>
             </div>
 
-            {/* Column 2: Sitemap (Live Pages) */}
-            <div className="space-y-4">
-              <h4 className="text-xxs font-bold uppercase tracking-widest" style={{ color: colors.primary }}>Live Sections</h4>
-              <ul className="space-y-2 text-xxs">
+            {/* Column 2: 2-Column arranged links */}
+            <div className="space-y-4 md:col-span-1">
+              <h4 className="text-xs font-black uppercase tracking-widest font-mono" style={{ color: colors.primary }}>Pages Navigation</h4>
+              <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs">
                 {navItems.map((item) => (
                   <li key={item.id}>
                     <button
@@ -1786,75 +1823,34 @@ const MainAppContent: React.FC = () => {
                         setActiveSection(item.id);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="hover:underline transition-all font-mono opacity-80 hover:opacity-100 text-left cursor-pointer"
+                      className="hover:underline transition-all font-mono font-bold hover:text-indigo-600 dark:hover:text-cyan-400 text-left cursor-pointer flex items-center gap-1.5"
                       style={{ color: colors.text }}
                     >
-                      ✓ {item.label}
+                      <span style={{ color: colors.primary }}>■</span> {item.label}
                     </button>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Column 3: Feature Roadmap (Coming Soon) */}
+            {/* Column 3: Simple Admin Entry */}
             <div className="space-y-4">
-              <h4 className="text-xxs font-bold uppercase tracking-widest" style={{ color: colors.secondary }}>Roadmap</h4>
-              <ul className="space-y-2 text-xxs font-mono">
-                {siteSettings.comingSoonFeatures.map((feat) => (
-                  <li key={feat} className="flex items-center gap-2 opacity-65">
-                    <span 
-                      className="w-1.5 h-1.5 rounded-full shrink-0"
-                      style={{ backgroundColor: colors.borderColor }}
-                    />
-                    <span style={{ color: colors.mutedText }}>{feat}</span>
-                    <span 
-                      className="px-1.5 py-0.5 rounded text-[8px] font-semibold tracking-wider uppercase border leading-none scale-90 origin-left"
-                      style={{ 
-                        color: colors.secondary, 
-                        borderColor: colors.secondary + '22',
-                        backgroundColor: colors.secondary + '05'
-                      }}
-                    >
-                      SOON
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 4: Architectural Specs */}
-            <div className="space-y-4">
-              <h4 className="text-xxs font-bold uppercase tracking-widest" style={{ color: colors.accent }}>Architecture state</h4>
-              <div 
-                className="p-3.5 rounded-xl border font-mono text-[9px] leading-relaxed space-y-1.5"
-                style={{ 
-                  backgroundColor: theme === 'aurora' ? 'rgba(8, 11, 20, 0.5)' : '#ffffff', 
-                  borderColor: colors.borderColor,
-                  color: colors.mutedText
+              <h4 id="admin-header-title" className="text-xs font-black uppercase tracking-widest font-mono" style={{ color: colors.accent }}>Admin Gateway</h4>
+              <button
+                id="admin-footer-btn"
+                onClick={() => {
+                  setActiveSection('admin');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
+                className="px-5 py-2.5 bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 hover:scale-103 font-mono font-bold text-xs text-white rounded-xl shadow-xs cursor-pointer transition-all flex items-center justify-center gap-1.5"
               >
-                <div className="flex justify-between items-center">
-                  <span>CMS Synced:</span>
-                  <span className="font-bold text-emerald-400">ACTIVE</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Provider:</span>
-                  <span className="opacity-75">Google Sheets</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Cache Strategy:</span>
-                  <span className="opacity-75">5m LocalStorage</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Deployment:</span>
-                  <span className="opacity-75">Vercel Configured</span>
-                </div>
-              </div>
+                🔐 Admin
+              </button>
             </div>
           </div>
 
           {/* Bottom Row Credits */}
-          <div className="border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xxs font-mono" style={{ borderColor: colors.borderColor, color: colors.mutedText }}>
+          <div className="border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono font-bold" style={{ borderColor: colors.borderColor, color: colors.mutedText }}>
             <p className="opacity-80">© {new Date().getFullYear()} {personalDetails.name}. All rights reserved.</p>
             <p className="opacity-65 text-center sm:text-right">{siteSettings.footerText}</p>
           </div>

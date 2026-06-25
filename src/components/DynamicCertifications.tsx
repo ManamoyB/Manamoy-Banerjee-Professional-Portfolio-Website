@@ -155,42 +155,54 @@ export const DynamicCertifications: React.FC = () => {
   };
 
   return (
-    <div className="w-full space-y-8" id="certifications-hub">
+    <div className="w-full space-y-8 animate-fade-in" id="certifications-hub">
       
       {/* PROFESSIONAL CERTIFICATIONS HERO BANNER */}
-      <div className="rounded-3xl border p-8 relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-950 to-slate-950 shadow-xl" style={{ borderColor: colors.borderColor }}>
+      <div 
+        className="rounded-3xl border p-8 relative overflow-hidden shadow-xl transition-all duration-300" 
+        style={{ 
+          backgroundColor: colors.cardBg,
+          borderColor: colors.borderColor 
+        }}
+      >
         <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] bg-indigo-500/10 pointer-events-none -translate-y-10" />
         
         <div className="flex flex-col lg:flex-row gap-6 justify-between items-start lg:items-center relative z-10">
           <div className="space-y-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[9px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/20 text-indigo-400">
-              <Award className="w-3.5 h-3.5" />
-              <span>Verified Credentials Registry</span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/25 text-indigo-600 dark:text-indigo-400">
+              <Award className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+              <span className="font-extrabold text-[10px]">Verified Credentials Registry</span>
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight" style={{ color: colors.text }}>
               Professional Certifications
             </h2>
-            <p className="text-xs sm:text-sm max-w-xl text-slate-400 font-sans leading-relaxed">
+            <p className="text-sm max-w-xl font-semibold leading-relaxed" style={{ color: colors.mutedText }}>
               Curated learning trajectories and specialized analytics credentials validating standard machine learning workflows and production-grade architectures.
             </p>
           </div>
 
           {/* Core HUD Certification Counter Panel */}
-          <div className="flex gap-4 p-4 rounded-2xl bg-slate-950/70 border border-slate-800 shrink-0 font-mono text-center">
+          <div 
+            className="flex gap-4 p-4 rounded-2xl border shrink-0 font-mono text-center transition-colors duration-300"
+            style={{
+              backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.7)' : 'rgba(15, 23, 42, 0.02)',
+              borderColor: colors.borderColor
+            }}
+          >
             <div className="px-2">
-              <span className="text-[8px] opacity-40 uppercase block">Total Verified</span>
-              <span className="text-2xl font-black text-indigo-400 block mt-1">{stats.total}</span>
-              <span className="text-[7px] text-slate-500 block mt-0.5">Credentials</span>
+              <span className="text-[10px] font-black uppercase block" style={{ color: colors.mutedText }}>Total Verified</span>
+              <span className="text-2xl font-black text-indigo-600 dark:text-indigo-400 block mt-1">{stats.total}</span>
+              <span className="text-[9px] font-bold block mt-0.5" style={{ color: colors.mutedText }}>Credentials</span>
             </div>
-            <div className="border-l border-slate-800 px-4">
-              <span className="text-[8px] opacity-40 uppercase block">Core Highlights</span>
-              <span className="text-2xl font-black text-amber-400 block mt-1">{stats.highlightedCount}</span>
-              <span className="text-[7px] text-slate-500 block mt-0.5">IBM & Google</span>
+            <div className="border-l px-4" style={{ borderColor: colors.borderColor }}>
+              <span className="text-[10px] font-black uppercase block" style={{ color: colors.mutedText }}>Core Highlights</span>
+              <span className="text-2xl font-black text-amber-600 dark:text-amber-400 block mt-1">{stats.highlightedCount}</span>
+              <span className="text-[9px] font-bold block mt-0.5" style={{ color: colors.mutedText }}>IBM & Google</span>
             </div>
-            <div className="border-l border-slate-800 px-2">
-              <span className="text-[8px] opacity-40 uppercase block">AI & ML Stacks</span>
-              <span className="text-2xl font-black text-emerald-400 block mt-1">{stats.aiMlCount}</span>
-              <span className="text-[7px] text-slate-500 block mt-0.5">Specializations</span>
+            <div className="border-l px-2" style={{ borderColor: colors.borderColor }}>
+              <span className="text-[10px] font-black uppercase block" style={{ color: colors.mutedText }}>AI & ML Stacks</span>
+              <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400 block mt-1">{stats.aiMlCount}</span>
+              <span className="text-[9px] font-bold block mt-0.5" style={{ color: colors.mutedText }}>Specializations</span>
             </div>
           </div>
         </div>
@@ -210,10 +222,10 @@ export const DynamicCertifications: React.FC = () => {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1.5 rounded-full border text-xxs font-mono font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-full border text-xs font-mono font-bold transition-all cursor-pointer ${
                     isSelected 
                       ? 'bg-indigo-500 border-indigo-500 text-white shadow-md' 
-                      : 'opacity-60 hover:opacity-100'
+                      : 'opacity-70 hover:opacity-100 hover:scale-102 font-bold'
                   }`}
                   style={{
                     borderColor: isSelected ? colors.primary : colors.borderColor,
@@ -227,12 +239,19 @@ export const DynamicCertifications: React.FC = () => {
           </div>
 
           {/* Toggle layout view mode (Grid vs Timeline) */}
-          <div className="flex items-center gap-1.5 shrink-0 bg-slate-900 border border-slate-800 p-1.5 rounded-full font-mono">
+          <div 
+            className="flex items-center gap-1.5 shrink-0 border p-1.5 rounded-full font-mono transition-colors duration-300"
+            style={{
+              backgroundColor: theme === 'aurora' ? '#0f172a' : '#f1f5f9',
+              borderColor: colors.borderColor
+            }}
+          >
             <button
               onClick={() => setViewMode('grid')}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-all ${
-                viewMode === 'grid' ? 'bg-indigo-500 text-white shadow-sm' : 'opacity-50 hover:opacity-100 text-slate-300'
+                viewMode === 'grid' ? 'bg-indigo-600 dark:bg-indigo-500 text-white shadow-sm' : 'opacity-70 hover:opacity-100'
               }`}
+              style={{ color: viewMode === 'grid' ? '#ffffff' : colors.text }}
             >
               <Grid className="w-3.5 h-3.5" />
               <span>Grid View</span>
@@ -240,8 +259,9 @@ export const DynamicCertifications: React.FC = () => {
             <button
               onClick={() => setViewMode('timeline')}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-all ${
-                viewMode === 'timeline' ? 'bg-indigo-500 text-white shadow-sm' : 'opacity-50 hover:opacity-100 text-slate-300'
+                viewMode === 'timeline' ? 'bg-indigo-600 dark:bg-indigo-500 text-white shadow-sm' : 'opacity-70 hover:opacity-100'
               }`}
+              style={{ color: viewMode === 'timeline' ? '#ffffff' : colors.text }}
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Timeline View</span>
@@ -251,12 +271,18 @@ export const DynamicCertifications: React.FC = () => {
         </div>
 
         {/* Searching input & Quick Filter Providers */}
-        <div className="flex flex-col md:flex-row gap-4 p-4 rounded-2xl border bg-slate-900/50" style={{ borderColor: colors.borderColor }}>
+        <div 
+          className="flex flex-col md:flex-row gap-4 p-4 rounded-2xl border transition-colors duration-300" 
+          style={{ 
+            backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.02)',
+            borderColor: colors.borderColor 
+          }}
+        >
           
           {/* Quick filter featured provider badges */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xxs font-mono font-bold uppercase tracking-wider text-slate-500 mr-2 flex items-center gap-1">
-              <SlidersHorizontal className="w-3 h-3 text-indigo-400" />
+            <span className="text-xs font-mono font-black uppercase tracking-wider mr-2 flex items-center gap-1" style={{ color: colors.mutedText }}>
+              <SlidersHorizontal className="w-3 h-3 text-indigo-500 dark:text-indigo-400" />
               Quick Issuer:
             </span>
             {featuredProviders.map((provider) => {
@@ -265,12 +291,15 @@ export const DynamicCertifications: React.FC = () => {
                 <button
                   key={provider}
                   onClick={() => setSelectedIssuer(provider)}
-                  className={`px-3 py-1 rounded-full border text-[10px] font-mono font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-full border text-xs font-mono font-bold transition-all cursor-pointer ${
                     isSelected 
-                      ? 'bg-slate-200 border-slate-200 text-slate-900' 
-                      : 'bg-transparent text-slate-400 hover:text-white hover:border-slate-500'
+                      ? 'bg-indigo-600 border-indigo-600 text-white' 
+                      : 'opacity-80 hover:opacity-100 hover:scale-102 font-bold'
                   }`}
-                  style={{ borderColor: isSelected ? '#ffffff' : colors.borderColor }}
+                  style={{ 
+                    borderColor: isSelected ? colors.primary : colors.borderColor,
+                    color: isSelected ? '#ffffff' : colors.text
+                  }}
                 >
                   {provider === 'All' ? 'All Providers' : provider}
                 </button>
@@ -286,15 +315,24 @@ export const DynamicCertifications: React.FC = () => {
               placeholder="Search specific title, subject, or credential fields..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 border text-xxs font-mono rounded-full focus:outline-none focus:border-indigo-500 bg-slate-950 border-slate-800 text-slate-200"
-              style={{ borderColor: colors.borderColor }}
+              className="w-full pl-9 pr-4 py-2.5 border text-xs sm:text-sm font-mono rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500/25 shadow-xs transition-colors"
+              style={{ 
+                backgroundColor: colors.cardBg,
+                borderColor: colors.borderColor,
+                color: colors.text 
+              }}
             />
           </div>
 
           <button
             onClick={() => fetchCerts(true)}
             title="Force refresh index databases"
-            className="p-2 border rounded-full text-indigo-400 border-indigo-500/10 hover:bg-slate-900 transition-colors self-end md:self-center cursor-pointer cursor-pointers"
+            className="p-2.5 border rounded-full transition-all hover:scale-105 cursor-pointer"
+            style={{ 
+              borderColor: colors.borderColor,
+              backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(99, 102, 241, 0.05)',
+              color: colors.primary
+            }}
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           </button>
@@ -316,9 +354,9 @@ export const DynamicCertifications: React.FC = () => {
         </div>
       ) : processedCerts.length === 0 ? (
         <div className="text-center py-24 border border-dashed rounded-3xl" style={{ borderColor: colors.borderColor }}>
-          <FolderDot className="w-12 h-12 text-slate-600 mx-auto opacity-50 mb-4 animate-bounce" />
-          <h4 className="text-lg font-bold text-slate-300">Empty credentials map</h4>
-          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+          <FolderDot className="w-12 h-12 mx-auto mb-4 animate-bounce" style={{ color: colors.primary }} />
+          <h4 className="text-lg font-black" style={{ color: colors.text }}>Empty credentials map</h4>
+          <p className="text-xs font-semibold mt-1 max-w-sm mx-auto" style={{ color: colors.mutedText }}>
             Try resetting your search query or quick filters to find your certificates.
           </p>
           <button
@@ -327,7 +365,7 @@ export const DynamicCertifications: React.FC = () => {
               setSelectedCategory('All');
               setSelectedIssuer('All');
             }}
-            className="mt-4 px-4 py-2 text-xxs font-mono font-bold bg-indigo-500 hover:bg-indigo-600 text-white rounded-full transition-all cursor-pointer"
+            className="mt-4 px-4 py-2 text-xs font-mono font-black bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 text-white rounded-full transition-all cursor-pointer"
           >
             Clear Active Filters
           </button>
@@ -339,20 +377,21 @@ export const DynamicCertifications: React.FC = () => {
           {processedCerts.map((cert, idx) => (
             <div
               key={idx}
-              className={`rounded-2xl border p-5 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 hover:shadow-2xl ${
-                cert.isHighlighted 
-                  ? 'border-indigo-500/40 shadow-xl shadow-indigo-500/5 bg-gradient-to-b from-slate-900/60 to-slate-950/20' 
-                  : ''
-              }`}
+              className={`rounded-2xl border p-5 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 hover:shadow-2xl`}
               style={{
                 backgroundColor: colors.cardBg,
-                borderColor: cert.isHighlighted ? undefined : colors.borderColor
+                borderColor: cert.isHighlighted 
+                  ? (theme === 'aurora' ? 'rgba(99, 102, 241, 0.4)' : 'rgba(99, 102, 241, 0.3)') 
+                  : colors.borderColor,
+                boxShadow: cert.isHighlighted 
+                  ? (theme === 'aurora' ? '0 10px 15px -3px rgba(99, 102, 241, 0.05)' : '0 10px 15px -3px rgba(99, 102, 241, 0.03)') 
+                  : undefined
               }}
             >
               {/* Highlight ribbon indicator */}
               {cert.isHighlighted && (
-                <div className="absolute top-0 right-0 py-1 px-3 text-[8px] font-mono font-extrabold uppercase rounded-bl-xl tracking-wider bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 select-none shadow z-10 flex items-center gap-1">
-                  <Bookmark className="w-2.5 h-2.5 fill-slate-950" />
+                <div className="absolute top-0 right-0 py-1 px-3 text-[8px] font-mono font-black uppercase rounded-bl-xl tracking-wider bg-gradient-to-r from-amber-500 to-orange-500 text-amber-950 select-none shadow z-10 flex items-center gap-1">
+                  <Bookmark className="w-2.5 h-2.5 fill-amber-950" />
                   <span>Highlight Certificate</span>
                 </div>
               )}
@@ -363,17 +402,17 @@ export const DynamicCertifications: React.FC = () => {
 
                 {/* Issuer & Date info row */}
                 <div className="space-y-1">
-                  <div className="flex justify-between items-center text-[10px] font-mono text-slate-400">
-                    <span className="font-bold uppercase tracking-wider text-indigo-400">
+                  <div className="flex justify-between items-center text-[10px] font-mono">
+                    <span className="font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                       {cert.category || 'Professional'}
                     </span>
-                    <span className="opacity-60 flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 opacity-70" />
+                    <span className="font-bold flex items-center gap-1" style={{ color: colors.mutedText }}>
+                      <Calendar className="w-3.5 h-3.5" />
                       {cert.issueDate}
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-black text-rose-50 font-sans tracking-tight leading-snug line-clamp-2" style={{ color: colors.text }}>
+                  <h3 className="text-sm font-extrabold font-sans tracking-tight leading-snug line-clamp-2" style={{ color: colors.text }}>
                     {cert.title}
                   </h3>
                 </div>
@@ -381,10 +420,10 @@ export const DynamicCertifications: React.FC = () => {
                 {/* Skills learned section */}
                 {cert.skills && (
                   <div className="border-t border-dashed pt-3" style={{ borderColor: colors.borderColor }}>
-                    <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-slate-500 block mb-1">
+                    <span className="text-[8px] font-mono font-black uppercase tracking-widest block mb-1" style={{ color: colors.mutedText }}>
                       Skills Validated
                     </span>
-                    <p className="text-[10px] text-slate-400 leading-normal line-clamp-2">
+                    <p className="text-[11px] font-semibold leading-relaxed" style={{ color: colors.mutedText }}>
                       {cert.skills}
                     </p>
                   </div>
@@ -397,8 +436,12 @@ export const DynamicCertifications: React.FC = () => {
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-1.5 py-2 text-xxs font-mono font-bold rounded-lg border text-slate-300 hover:text-white hover:bg-slate-950 transition-all shadow-inner cursor-pointer"
-                  style={{ borderColor: colors.borderColor }}
+                  className="w-full flex items-center justify-center gap-1.5 py-2 text-[10px] font-mono font-black rounded-lg border transition-all cursor-pointer shadow-xs"
+                  style={{ 
+                    borderColor: colors.borderColor,
+                    backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.02)',
+                    color: colors.text
+                  }}
                 >
                   <span>Verify Credentials</span>
                   <ExternalLink className="w-3.5 h-3.5 opacity-70" />
@@ -422,50 +465,56 @@ export const DynamicCertifications: React.FC = () => {
               className="relative group flex items-start gap-4 transition-transform duration-300 hover:translate-x-1"
             >
               {/* Chronological map hub node bullet */}
-              <div className={`absolute -left-[23.5px] sm:-left-[31.5px] w-4 h-4 rounded-full border-2 bg-slate-950 z-10 flex items-center justify-center transition-all group-hover:scale-125 ${
-                cert.isHighlighted ? 'border-amber-400 w-5 h-5 -left-[25.5px] sm:-left-[33.5px]' : 'border-indigo-500'
-              }`}>
-                <div className={`w-1.5 h-1.5 rounded-full ${cert.isHighlighted ? 'bg-amber-400 animate-ping' : 'bg-indigo-500'}`} />
+              <div 
+                className={`absolute -left-[23.5px] sm:-left-[31.5px] w-4 h-4 rounded-full border-2 z-10 flex items-center justify-center transition-all group-hover:scale-125 ${
+                  cert.isHighlighted ? 'border-amber-500 dark:border-amber-400 w-5 h-5 -left-[25.5px] sm:-left-[33.5px]' : 'border-indigo-600 dark:border-indigo-500'
+                }`}
+                style={{ backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff' }}
+              >
+                <div className={`w-1.5 h-1.5 rounded-full ${cert.isHighlighted ? 'bg-amber-600 dark:bg-amber-400 animate-ping' : 'bg-indigo-600 dark:bg-indigo-500'}`} />
               </div>
 
               {/* Timestamp label column */}
-              <div className="hidden xs:block w-24 shrink-0 pt-1.5 text-right font-mono text-xs text-slate-400 font-bold leading-none pr-2">
+              <div className="hidden xs:block w-24 shrink-0 pt-1.5 text-right font-mono text-xs font-bold leading-none pr-2" style={{ color: colors.mutedText }}>
                 {cert.issueDate}
               </div>
 
               {/* Timeline Card content */}
               <div 
-                className={`flex-1 rounded-2xl border p-4 backdrop-blur-md flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 transition-all duration-300 ${
-                  cert.isHighlighted 
-                    ? 'border-indigo-500/40 bg-indigo-500/5 shadow-lg shadow-indigo-500/5' 
-                    : 'bg-slate-900/40 hover:border-slate-700'
-                }`}
+                className={`flex-1 rounded-2xl border p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 transition-all duration-300`}
                 style={{ 
-                  borderColor: cert.isHighlighted ? undefined : colors.borderColor,
-                  backgroundColor: cert.isHighlighted ? undefined : colors.cardBg
+                  borderColor: cert.isHighlighted 
+                    ? (theme === 'aurora' ? 'rgba(99, 102, 241, 0.4)' : 'rgba(99, 102, 241, 0.3)') 
+                    : colors.borderColor,
+                  backgroundColor: cert.isHighlighted 
+                    ? (theme === 'aurora' ? 'rgba(99, 102, 241, 0.05)' : 'rgba(99, 102, 241, 0.03)')
+                    : colors.cardBg,
+                  boxShadow: cert.isHighlighted 
+                    ? '0 4px 12px rgba(99, 102, 241, 0.05)' 
+                    : undefined
                 }}
               >
                 <div className="space-y-1.5">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                    <span className="text-[8px] font-mono font-bold text-indigo-400 uppercase">
+                    <span className="text-[10px] font-mono font-black text-indigo-600 dark:text-indigo-400 uppercase">
                       {cert.category}
                     </span>
-                    <span className="xs:hidden text-[8px] font-mono text-slate-500">{cert.issueDate}</span>
+                    <span className="xs:hidden text-[9px] font-mono font-bold" style={{ color: colors.mutedText }}>{cert.issueDate}</span>
                     {cert.isHighlighted && (
-                      <span className="text-[7px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 shadow-sm leading-none">
+                      <span className="text-[8px] font-mono font-black uppercase px-1.5 py-0.5 rounded bg-gradient-to-r from-amber-500 to-orange-500 text-amber-950 shadow-xs leading-none">
                         Core Highlight
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-sm font-black text-rose-50 font-sans tracking-tight leading-snug" style={{ color: colors.text }}>
+                  <h3 className="text-sm font-extrabold font-sans tracking-tight leading-snug" style={{ color: colors.text }}>
                     {cert.title}
                   </h3>
 
-                  <div className="flex flex-wrap items-center gap-y-0.5 gap-x-3 text-[10px] text-slate-500">
-                    <span className="font-bold text-slate-400">{cert.issuer}</span>
-                    <span className="opacity-45">•</span>
-                    <span className="line-clamp-1 italic text-slate-400">Skills: {cert.skills}</span>
+                  <div className="flex flex-wrap items-center gap-y-0.5 gap-x-3 text-xs">
+                    <span className="font-extrabold" style={{ color: colors.text }}>{cert.issuer}</span>
+                    <span className="opacity-40">•</span>
+                    <span className="line-clamp-1 italic font-semibold" style={{ color: colors.mutedText }}>Skills: {cert.skills}</span>
                   </div>
                 </div>
 
@@ -475,7 +524,12 @@ export const DynamicCertifications: React.FC = () => {
                     href={cert.credentialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1 px-3.5 py-2 text-xxs font-mono font-bold rounded-lg border text-slate-300 bg-slate-950 border-slate-800 hover:text-white transition-all shadow-sm cursor-pointer hover:bg-slate-900"
+                    className="flex items-center justify-center gap-1 px-3.5 py-2 text-[10px] font-mono font-black rounded-lg border transition-all shadow-xs cursor-pointer"
+                    style={{
+                      backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.02)',
+                      borderColor: colors.borderColor,
+                      color: colors.text
+                    }}
                   >
                     <span>Verify</span>
                     <ExternalLink className="w-3 h-3 opacity-80" />

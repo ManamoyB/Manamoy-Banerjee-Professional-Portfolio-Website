@@ -93,16 +93,20 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
 
   // Render responsive customized SVG mockups representing screenshots
   const renderScreenshotMockup = (projectId: string) => {
+    const mockupBg = theme === 'aurora' ? '#020617' : '#f8fafc';
     switch (projectId) {
       case 'sentiment-stock-forecast':
         return (
-          <div className="w-full h-44 rounded-xl bg-slate-950 border border-emerald-500/25 p-3 flex flex-col justify-between relative overflow-hidden font-mono">
-            <div className="flex justify-between items-center border-b border-emerald-500/10 pb-1.5 text-[9px] text-emerald-400">
+          <div 
+            className="w-full h-44 rounded-xl border p-3 flex flex-col justify-between relative overflow-hidden font-mono transition-colors duration-300"
+            style={{ backgroundColor: mockupBg, borderColor: colors.borderColor }}
+          >
+            <div className="flex justify-between items-center border-b pb-1.5 text-[9px] text-emerald-600 dark:text-emerald-400 text-opacity-90" style={{ borderColor: 'rgba(16, 185, 129, 0.15)' }}>
               <span className="flex items-center gap-1">
-                <Activity className="w-3 h-3 text-emerald-400" />
+                <Activity className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 <span>INDEX_MODEL // FIN_STREAM</span>
               </span>
-              <span className="text-emerald-500/60 animate-pulse">● LIVE</span>
+              <span className="text-emerald-600 dark:text-emerald-500/60 animate-pulse font-black">● LIVE</span>
             </div>
             
             {/* SVG line representing stock chart forecast */}
@@ -114,31 +118,34 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                 </linearGradient>
               </defs>
               {/* historical values path */}
-              <path d="M 0 50 Q 30 40 60 60 T 120 30 T 180 55 T 240 20 L 300 45" fill="none" stroke="#64748b" strokeWidth="1.5" strokeDasharray="3,3" />
+              <path d="M 0 50 Q 30 40 60 60 T 120 30 T 180 55 T 240 20 L 300 45" fill="none" stroke={theme === 'aurora' ? '#475569' : '#cbd5e1'} strokeWidth="1.5" strokeDasharray="3,3" />
               {/* forecasting sentiment integration */}
               <path d="M 120 30 T 180 25 T 240 10 L 300 5 L 300 80 L 120 80 Z" fill="url(#glow-chart)" />
               <path d="M 120 30 T 180 25 T 240 10 L 300 5" fill="none" stroke="#10b981" strokeWidth="2.5" />
               <circle cx="120" cy="30" r="3" fill="#10b981" />
-              <text x="125" y="27" className="text-[7px] fill-emerald-400 font-bold">FinBERT Pivot Point</text>
+              <text x="125" y="27" className="text-[7.5px] font-bold fill-emerald-600 dark:fill-emerald-400">FinBERT Pivot Point</text>
             </svg>
-
-            <div className="flex justify-between items-center text-[8px] text-slate-500">
+ 
+            <div className="flex justify-between items-center text-[8px]" style={{ color: colors.mutedText }}>
               <span>VOLATILITY MATRIX CORR: 0.892</span>
-              <span className="text-emerald-400">MAE INDEXED -18.4%</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">MAE INDEXED -18.4%</span>
             </div>
           </div>
         );
       case 'deepfake-detection':
         return (
-          <div className="w-full h-44 rounded-xl bg-slate-950 border border-purple-500/25 p-3 flex flex-col justify-between relative overflow-hidden font-mono">
-            <div className="flex justify-between items-center border-b border-purple-500/10 pb-1.5 text-[9px] text-purple-400">
+          <div 
+            className="w-full h-44 rounded-xl border p-3 flex flex-col justify-between relative overflow-hidden font-mono transition-colors duration-300"
+            style={{ backgroundColor: mockupBg, borderColor: colors.borderColor }}
+          >
+            <div className="flex justify-between items-center border-b pb-1.5 text-[9px] text-purple-600 dark:text-purple-400 text-opacity-90" style={{ borderColor: 'rgba(168, 85, 247, 0.15)' }}>
               <span className="flex items-center gap-1">
-                <Cpu className="w-3 h-3 text-purple-400" />
+                <Cpu className="w-3 h-3 text-purple-600 dark:text-purple-400" />
                 <span>SCANNER_FRAME // GRAD_CAM</span>
               </span>
-              <span className="text-purple-500/60 animate-pulse">VAL_94.2%</span>
+              <span className="text-purple-600 dark:text-purple-500/60 animate-pulse font-black">VAL_94.2%</span>
             </div>
-
+ 
             {/* Neural scan face mockup */}
             <div className="flex-1 flex items-center justify-center relative my-1">
               <div className="w-20 h-20 rounded-full border border-dashed border-purple-500/40 flex items-center justify-center relative">
@@ -146,95 +153,104 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                   <div className="w-4 h-4 bg-purple-500/20 rounded-full animate-ping" />
                 </div>
                 {/* Visualizing heat hotspots */}
-                <span className="absolute top-2 left-2 text-[6px] text-pink-400 border border-pink-500/30 px-1 bg-pink-500/10 rounded">BIOMETRIC_GAP</span>
-                <span className="absolute bottom-2 right-1 text-[6px] text-purple-300 border border-purple-500/30 px-1 bg-purple-500/10 rounded">EYE_BLINK_LAG</span>
+                <span className="absolute top-2 left-2 text-[6px] text-pink-600 dark:text-pink-400 border border-pink-500/30 px-1 bg-pink-500/5 dark:bg-pink-500/10 rounded font-bold">BIOMETRIC_GAP</span>
+                <span className="absolute bottom-2 right-1 text-[6px] text-purple-600 dark:text-purple-300 border border-purple-500/30 px-1 bg-purple-500/5 dark:bg-purple-500/10 rounded font-bold">EYE_BLINK_LAG</span>
                 
                 {/* Focus box overlay */}
                 <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-purple-400" />
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-purple-400" />
               </div>
             </div>
-
-            <div className="flex justify-between items-center text-[8px] text-slate-500">
+ 
+            <div className="flex justify-between items-center text-[8px]" style={{ color: colors.mutedText }}>
               <span>FPS: 45 // MODEL: EFFICIENTNET-B4</span>
-              <span className="text-purple-400">CELEB-DF APPROVED</span>
+              <span className="text-purple-600 dark:text-purple-400 font-extrabold">CELEB-DF APPROVED</span>
             </div>
           </div>
         );
       case 'medicine-recommendation':
         return (
-          <div className="w-full h-44 rounded-xl bg-slate-950 border border-blue-500/25 p-3 flex flex-col justify-between relative overflow-hidden font-mono">
-            <div className="flex justify-between items-center border-b border-blue-500/10 pb-1.5 text-[9px] text-blue-400">
+          <div 
+            className="w-full h-44 rounded-xl border p-3 flex flex-col justify-between relative overflow-hidden font-mono transition-colors duration-300"
+            style={{ backgroundColor: mockupBg, borderColor: colors.borderColor }}
+          >
+            <div className="flex justify-between items-center border-b pb-1.5 text-[9px] text-blue-600 dark:text-blue-400 text-opacity-90" style={{ borderColor: 'rgba(59, 130, 246, 0.15)' }}>
               <span className="flex items-center gap-1">
-                <Layers className="w-3 h-3 text-blue-400" />
+                <Layers className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                 <span>NEO4J_PATH_VERIFIER</span>
               </span>
-              <span className="text-emerald-400 font-bold">99.1% SAFE</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-black">99.1% SAFE</span>
             </div>
-
+ 
             {/* Simulated relationship node cluster */}
             <div className="flex-1 flex items-center justify-center relative my-1 gap-1">
               <div className="flex flex-col items-center gap-1 scale-90">
-                <div className="px-1.5 py-0.5 rounded border border-blue-500/50 bg-blue-500/10 text-[7px] text-white">Symptom Input</div>
-                <div className="h-4 w-px bg-dashed bg-slate-700" />
-                <div className="px-1.5 py-0.5 rounded border border-indigo-500/50 bg-indigo-500/20 text-[7px] text-indigo-300">BioBERT Entity</div>
-                <div className="h-4 w-px bg-slate-700" />
+                <div className="px-1.5 py-0.5 rounded border border-blue-500/30 bg-blue-500/5 dark:bg-blue-500/10 text-[7px]" style={{ color: colors.text }}>Symptom Input</div>
+                <div className="h-4 w-px border-l border-dashed border-slate-400 dark:border-slate-700" />
+                <div className="px-1.5 py-0.5 rounded border border-indigo-500/30 bg-indigo-500/10 text-[7px] text-indigo-700 dark:text-indigo-300 font-bold">BioBERT Entity</div>
+                <div className="h-4 w-px border-l border-slate-300 dark:border-slate-700" />
                 <div className="flex items-center gap-2">
-                  <span className="px-1 py-0.5 rounded border border-emerald-500 bg-emerald-500/10 text-[6px] text-emerald-400">Match Drug A</span>
-                  <span className="px-1 py-0.5 rounded border border-rose-500 bg-rose-500/10 text-[6px] text-rose-400">Conflict Drug B</span>
+                  <span className="px-1 py-0.5 rounded border border-emerald-500/40 bg-emerald-500/5 dark:bg-emerald-500/10 text-[6px] text-emerald-600 dark:text-emerald-400 font-bold">Match Drug A</span>
+                  <span className="px-1 py-0.5 rounded border border-rose-500/40 bg-rose-500/5 dark:bg-rose-500/10 text-[6px] text-rose-600 dark:text-rose-400 font-bold">Conflict Drug B</span>
                 </div>
               </div>
             </div>
-
-            <div className="flex justify-between items-center text-[8px] text-slate-500">
+ 
+            <div className="flex justify-between items-center text-[8px]" style={{ color: colors.mutedText }}>
               <span>BioBERT ENTITIES EXTR: 88.9%</span>
-              <span className="text-blue-400">INTERACTION CHECKED</span>
+              <span className="text-blue-600 dark:text-blue-400 font-extrabold">INTERACTION CHECKED</span>
             </div>
           </div>
         );
       case 'personal-intel-system':
         return (
-          <div className="w-full h-44 rounded-xl bg-slate-950 border border-amber-500/25 p-3 flex flex-col justify-between relative overflow-hidden font-mono">
-            <div className="flex justify-between items-center border-b border-amber-500/10 pb-1.5 text-[9px] text-amber-400">
+          <div 
+            className="w-full h-44 rounded-xl border p-3 flex flex-col justify-between relative overflow-hidden font-mono transition-colors duration-300"
+            style={{ backgroundColor: mockupBg, borderColor: colors.borderColor }}
+          >
+            <div className="flex justify-between items-center border-b pb-1.5 text-[9px] text-amber-600 dark:text-amber-400 text-opacity-90" style={{ borderColor: 'rgba(245, 158, 11, 0.15)' }}>
               <span className="flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-amber-400" />
+                <Sparkles className="w-3 h-3 text-amber-600 dark:text-amber-400" />
                 <span>OLLAMA // SECURE_INDEX</span>
               </span>
-              <span className="text-amber-500/60 font-mono">LOCAL_SYNC</span>
+              <span className="text-amber-600 dark:text-amber-500/60 font-black">LOCAL_SYNC</span>
             </div>
-
+ 
             {/* Folder indexing representation */}
             <div className="flex-1 flex flex-col justify-center text-left space-y-1.5 px-2 my-1">
-              <div className="text-[8px] text-slate-300 flex items-center justify-between">
+              <div className="text-[8px] flex items-center justify-between" style={{ color: colors.text }}>
                 <span>📂 Research_Papers/</span>
-                <span className="text-emerald-400 font-bold">Indexed</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">Indexed</span>
               </div>
-              <div className="text-[8px] text-slate-300 flex items-center justify-between">
+              <div className="text-[8px] flex items-center justify-between" style={{ color: colors.text }}>
                 <span>📂 Developer_Notes/</span>
-                <span className="text-emerald-400 font-bold">Indexed</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">Indexed</span>
               </div>
-              <div className="text-[8px] text-slate-500 pl-3">
+              <div className="text-[8px] pl-3" style={{ color: colors.mutedText }}>
                 <span>↳ chroma_vect_dense.db (Vector DB)</span>
               </div>
             </div>
-
-            <div className="flex justify-between items-center text-[8px] text-slate-500">
+ 
+            <div className="flex justify-between items-center text-[8px]" style={{ color: colors.mutedText }}>
               <span>RAM USAGE: 1.8GB // OLLAMA LOADED</span>
-              <span className="text-amber-400">FILES INDEXED: 10k+</span>
+              <span className="text-amber-600 dark:text-amber-400 font-extrabold">FILES INDEXED: 10k+</span>
             </div>
           </div>
         );
       default:
         return (
-          <div className="w-full h-44 rounded-xl bg-slate-950 border border-indigo-500/25 p-3 flex flex-col justify-between relative overflow-hidden font-mono">
-            <div className="flex justify-between items-center border-b border-indigo-500/10 pb-1.5 text-[9px] text-indigo-400">
+          <div 
+            className="w-full h-44 rounded-xl border p-3 flex flex-col justify-between relative overflow-hidden font-mono transition-colors duration-300"
+            style={{ backgroundColor: mockupBg, borderColor: colors.borderColor }}
+          >
+            <div className="flex justify-between items-center border-b pb-1.5 text-[9px] text-indigo-600 dark:text-indigo-400 text-opacity-90" style={{ borderColor: 'rgba(99, 102, 241, 0.15)' }}>
               <span className="flex items-center gap-1">
-                <Layout className="w-3 h-3 text-indigo-400" />
+                <Layout className="w-3 h-3 text-indigo-600 dark:text-indigo-400" />
                 <span>VIEWPORT // DYNAMIC_REACTIVE</span>
               </span>
-              <span className="text-indigo-400">OK</span>
+              <span className="text-indigo-600 dark:text-indigo-400 font-black">OK</span>
             </div>
-
+ 
             {/* Modular web layout mockup representation */}
             <div className="flex-1 flex flex-col justify-center text-left py-2 space-y-1 my-1">
               <div className="flex items-center gap-1.5">
@@ -242,15 +258,15 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               </div>
-              <div className="h-2 rounded bg-slate-800 w-3/4" />
-              <div className="h-6 rounded bg-indigo-500/10 border border-indigo-500/20 flex items-center px-1.5">
-                <div className="h-1 bg-indigo-400 rounded w-1/2" />
+              <div className="h-2 rounded w-3/4" style={{ backgroundColor: theme === 'aurora' ? '#1e293b' : '#e2e8f0' }} />
+              <div className="h-6 rounded border flex items-center px-1.5" style={{ backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(99, 102, 241, 0.05)', borderColor: 'rgba(99, 102, 241, 0.2)' }}>
+                <div className="h-1 bg-indigo-500/60 dark:bg-indigo-400 rounded w-1/2" />
               </div>
             </div>
-
-            <div className="flex justify-between items-center text-[8px] text-slate-500">
+ 
+            <div className="flex justify-between items-center text-[8px]" style={{ color: colors.mutedText }}>
               <span>VITE REBUILD: 0.12s</span>
-              <span className="text-indigo-400">LIGHTHOUSE 100/100</span>
+              <span className="text-indigo-600 dark:text-indigo-400 font-extrabold">LIGHTHOUSE 100/100</span>
             </div>
           </div>
         );
@@ -261,22 +277,28 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
     <div className="space-y-8 py-4 animate-fade-in" id="projects-showcase">
       
       {/* Advanced Hero Header */}
-      <div className="rounded-3xl border p-8 relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-950 to-slate-950 shadow-xl" style={{ borderColor: colors.borderColor }}>
+      <div 
+        className="rounded-3xl border p-8 relative overflow-hidden shadow-xl transition-all duration-300" 
+        style={{ 
+          borderColor: colors.borderColor,
+          backgroundColor: colors.cardBg
+        }}
+      >
         <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] bg-indigo-500/10 pointer-events-none -translate-y-10" />
         <div className="relative z-10 space-y-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[9px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/20 text-indigo-400">
-            <Layout className="w-3.5 h-3.5" />
-            <span>Interactive Repository Showcase</span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/25 text-indigo-600 dark:text-indigo-400">
+            <Layout className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span className="font-extrabold text-[10px]">Interactive Repository Showcase</span>
           </span>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight" style={{ color: colors.text }}>
             Advanced Systems Lab
           </h2>
-          <p className="text-xs sm:text-sm max-w-xl text-slate-400 font-sans leading-relaxed">
+          <p className="text-sm max-w-xl font-semibold leading-relaxed" style={{ color: colors.mutedText }}>
             Exploratory project models bridging deep numerical predictive research, diagnostic medical NLP systems, deepfake vector defenses, and highly performant full-stack solutions.
           </p>
         </div>
       </div>
-
+ 
       {/* Searching and Categorized Filtration Systems */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 border-b pb-4" style={{ borderColor: colors.borderColor }}>
         
@@ -288,10 +310,10 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-full border text-xxs font-mono font-bold transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-full border text-xs font-mono font-bold transition-all cursor-pointer ${
                   isSelected 
                     ? 'bg-indigo-500 border-indigo-500 text-white' 
-                    : 'opacity-60 hover:opacity-100'
+                    : 'opacity-70 hover:opacity-100 hover:scale-102'
                 }`}
                 style={{
                   borderColor: isSelected ? colors.primary : colors.borderColor,
@@ -303,22 +325,26 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
             );
           })}
         </div>
-
+ 
         {/* Dynamic Search queries */}
         <div className="relative w-full md:w-72 leading-none">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500 pointer-events-none" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
           <input
             type="text"
             placeholder="Search stack, title, descriptors..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 border text-xxs font-mono rounded-full focus:outline-none focus:border-indigo-500 bg-slate-900 border-slate-700 text-slate-100"
-            style={{ borderColor: colors.borderColor }}
+            className="w-full pl-9 pr-4 py-2.5 border text-xs sm:text-sm font-mono rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500/25 shadow-xs transition-colors"
+            style={{ 
+              backgroundColor: colors.cardBg,
+              borderColor: colors.borderColor,
+              color: colors.text 
+            }}
           />
         </div>
-
+ 
       </div>
-
+ 
       {/* Grid Layout of Advanced Project Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((proj) => (
@@ -332,7 +358,13 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
           >
             {/* Visual Cover Header */}
             <div className={`h-28 bg-gradient-to-b ${getCoverGradient(proj.id)} p-5 relative overflow-hidden border-b flex flex-col justify-end`} style={{ borderColor: colors.borderColor }}>
-              <div className="absolute top-4 left-4 w-9 h-9 rounded-lg flex items-center justify-center text-xl bg-slate-900 border border-white/5 shadow-md">
+              <div 
+                className="absolute top-4 left-4 w-9 h-9 rounded-lg flex items-center justify-center text-xl border shadow-md"
+                style={{ 
+                  backgroundColor: theme === 'aurora' ? '#0f172a' : '#ffffff', 
+                  borderColor: colors.borderColor 
+                }}
+              >
                 {proj.image}
               </div>
               {proj.featured && (
@@ -349,26 +381,31 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                 </h3>
               </div>
             </div>
-
+ 
             {/* Card Body content */}
             <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-              <p className="text-xs text-slate-400 leading-relaxed max-w-full font-sans">
+              <p className="text-xs leading-relaxed max-w-full font-sans" style={{ color: colors.mutedText }}>
                 {proj.description}
               </p>
-
+ 
               {/* Advanced metrics segment */}
               <div className="space-y-2">
                 <div className="flex flex-wrap gap-1">
                   {proj.techStack.map((tech) => (
                     <span 
                       key={tech} 
-                      className="text-[9px] px-2 py-0.5 rounded font-mono font-bold bg-slate-950 border border-slate-800 text-slate-400"
+                      className="text-[9px] px-2 py-0.5 rounded font-mono font-bold border transition-colors"
+                      style={{
+                        backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.04)',
+                        borderColor: colors.borderColor,
+                        color: colors.mutedText
+                      }}
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-
+ 
                 {/* Simulated Real-Time GitHub Stats Bar */}
                 <div className="flex items-center gap-4 text-[10px] font-mono text-slate-500 pt-1">
                   <span className="flex items-center gap-1 hover:text-amber-400 transition-colors">
@@ -385,25 +422,33 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                   </span>
                 </div>
               </div>
-
+ 
               {/* Action Buttons */}
               <div className="grid grid-cols-2 gap-2 pt-3 border-t border-dashed" style={{ borderColor: colors.borderColor }}>
                 <button
                   onClick={() => setSelectedProject(proj)}
-                  className="flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg border text-[10px] font-mono font-black transition-all hover:bg-slate-900 cursor-pointer text-slate-300"
-                  style={{ borderColor: colors.borderColor }}
+                  className="flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg border text-[10px] font-mono font-black transition-all cursor-pointer"
+                  style={{ 
+                    backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.3)' : 'rgba(15, 23, 42, 0.02)',
+                    borderColor: colors.borderColor,
+                    color: colors.text
+                  }}
                 >
                   <span>Lab Details</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
-
+ 
                 <div className="flex gap-1">
                   <a
                     href={proj.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center px-2 py-1.5 rounded-lg border text-xs text-slate-400 hover:text-white hover:bg-slate-900 transition-all focus:outline-none"
-                    style={{ borderColor: colors.borderColor }}
+                    className="flex-1 flex items-center justify-center px-2 py-1.5 rounded-lg border text-xs transition-all focus:outline-none"
+                    style={{ 
+                      backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.3)' : 'rgba(15, 23, 42, 0.02)',
+                      borderColor: colors.borderColor,
+                      color: colors.mutedText
+                    }}
                     title="View Source on GitHub"
                   >
                     <Github className="w-3.5 h-3.5" />
@@ -413,8 +458,12 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                       href={proj.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center px-2 py-1.5 rounded-lg border text-xs text-slate-400 hover:text-white hover:bg-slate-900 transition-all focus:outline-none"
-                      style={{ borderColor: colors.borderColor }}
+                      className="flex-1 flex items-center justify-center px-2 py-1.5 rounded-lg border text-xs transition-all focus:outline-none"
+                      style={{ 
+                        backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.15)' : 'rgba(99, 102, 241, 0.08)',
+                        borderColor: colors.borderColor,
+                        color: colors.primary
+                      }}
                       title="Live Demo"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -423,7 +472,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                 </div>
               </div>
             </div>
-
+ 
           </div>
         ))}
       </div>
@@ -444,10 +493,11 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-y-auto bg-slate-950/80 backdrop-blur-md">
           
           <div 
-            className="w-full max-w-3xl rounded-3xl border shadow-2xl relative overflow-hidden text-slate-100 flex flex-col max-h-[90vh]"
+            className="w-full max-w-3xl rounded-3xl border shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]"
             style={{ 
               backgroundColor: colors.cardBg, 
-              borderColor: colors.borderColor 
+              borderColor: colors.borderColor,
+              color: colors.text
             }}
           >
             {/* Modal header visual cover */}
@@ -475,21 +525,27 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
               {/* Problem vs Solution Split */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-rose-400 font-bold flex items-center gap-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-rose-500 font-bold flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-rose-500" />
                     Target Problem Statement
                   </span>
-                  <p className="text-xs text-slate-300 leading-relaxed font-sans bg-rose-950/10 border border-rose-500/10 rounded-2xl p-4">
+                  <p 
+                    className={`text-xs leading-relaxed font-sans border rounded-2xl p-4 ${theme === 'aurora' ? 'bg-rose-950/10 border-rose-500/10' : 'bg-rose-50/50 border-rose-200'}`}
+                    style={{ color: colors.text }}
+                  >
                     {selectedProject.problem}
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-500 font-bold flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-emerald-500" />
                     Resolution Logic
                   </span>
-                  <p className="text-xs text-slate-300 leading-relaxed font-sans bg-emerald-950/10 border border-emerald-500/10 rounded-2xl p-4">
+                  <p 
+                    className={`text-xs leading-relaxed font-sans border rounded-2xl p-4 ${theme === 'aurora' ? 'bg-emerald-950/10 border-emerald-500/10' : 'bg-emerald-50/50 border-emerald-200'}`}
+                    style={{ color: colors.text }}
+                  >
                     {selectedProject.solution}
                   </p>
                 </div>
@@ -499,7 +555,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
                 
                 <div className="md:col-span-7 space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold block">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold block" style={{ color: colors.text }}>
                     Interactive Interface Screenshot
                   </span>
                   {renderScreenshotMockup(selectedProject.id)}
@@ -515,7 +571,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                       <span className="text-xl sm:text-2xl font-black font-mono tracking-tight" style={{ color: colors.primary }}>
                         {selectedProject.impact.split(' ')[0]}
                       </span>
-                      <p className="text-[10px] text-slate-400 leading-normal font-sans">
+                      <p className="text-[10px] leading-normal font-sans font-semibold" style={{ color: colors.mutedText }}>
                         {selectedProject.impact.substring(selectedProject.impact.indexOf(' ') + 1)}
                       </p>
                     </div>
@@ -524,12 +580,12 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                   {/* GitHub interactive details */}
                   <div className="flex items-center gap-4 text-[10px] font-mono border-t border-dashed pt-4" style={{ borderColor: colors.borderColor }}>
                     <div className="text-center">
-                      <span className="opacity-40 block text-[8px]">REPOS_STARS</span>
-                      <span className="font-bold text-slate-200 block mt-0.5">{selectedProject.stars || 120} ★</span>
+                      <span className="opacity-40 block text-[8px] font-bold">REPOS_STARS</span>
+                      <span className="font-extrabold block mt-0.5" style={{ color: colors.text }}>{selectedProject.stars || 120} ★</span>
                     </div>
                     <div className="text-center border-l pl-4" style={{ borderColor: colors.borderColor }}>
-                      <span className="opacity-40 block text-[8px]">FORK_DIM</span>
-                      <span className="font-bold text-slate-200 block mt-0.5">{selectedProject.forks || 35} forks</span>
+                      <span className="opacity-40 block text-[8px] font-bold">FORK_DIM</span>
+                      <span className="font-extrabold block mt-0.5" style={{ color: colors.text }}>{selectedProject.forks || 35} forks</span>
                     </div>
                   </div>
                 </div>
@@ -547,13 +603,16 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                     {selectedProject.architecture.map((step, idx) => (
                       <div 
                         key={idx} 
-                        className="flex items-start gap-3 p-3 text-xs bg-slate-900 border rounded-xl hover:border-slate-700 transition-colors"
-                        style={{ borderColor: colors.borderColor }}
+                        className="flex items-start gap-3 p-3 text-xs border rounded-xl hover:scale-101 transition-all"
+                        style={{ 
+                          backgroundColor: theme === 'aurora' ? '#0f172a' : '#ffffff', 
+                          borderColor: colors.borderColor 
+                        }}
                       >
-                        <span className="font-mono font-bold text-indigo-400 bg-indigo-500/10 w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[10px]">
+                        <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[10px]">
                           0{idx + 1}
                         </span>
-                        <p className="text-slate-300 pt-0.5 leading-relaxed">{step}</p>
+                        <p className="pt-0.5 leading-relaxed" style={{ color: colors.text }}>{step}</p>
                       </div>
                     ))}
                   </div>
@@ -563,21 +622,21 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
               {/* Results & Key Challenges */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-200 font-bold flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold flex items-center gap-1" style={{ color: colors.text }}>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" />
                     Validation Results
                   </span>
-                  <p className="text-xs text-slate-400 leading-relaxed font-sans pl-2">
+                  <p className="text-xs leading-relaxed font-sans pl-2" style={{ color: colors.mutedText }}>
                     {selectedProject.results}
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-200 font-bold flex items-center gap-1">
-                    <AlertCircle className="w-3.5 h-3.5 text-rose-400" />
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold flex items-center gap-1" style={{ color: colors.text }}>
+                    <AlertCircle className="w-3.5 h-3.5 text-rose-500 dark:text-rose-400" />
                     Core Engineering Challenges
                   </span>
-                  <p className="text-xs text-slate-400 leading-relaxed font-sans pl-2 font-medium">
+                  <p className="text-xs leading-relaxed font-sans pl-2 font-medium" style={{ color: colors.mutedText }}>
                     {selectedProject.challenges}
                   </p>
                 </div>
@@ -586,16 +645,21 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
               {/* Future Improvements */}
               {selectedProject.futureImprovements && (
                 <div className="space-y-2 pt-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-200 font-bold block">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold block" style={{ color: colors.text }}>
                     Roadmap & Future Modifications
                   </span>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {selectedProject.futureImprovements.map((imp, idx) => (
                       <li 
                         key={idx} 
-                        className="text-xs text-slate-400 flex items-start gap-2 bg-slate-900/40 p-2.5 rounded-lg border border-slate-900"
+                        className="text-xs flex items-start gap-2 p-2.5 rounded-lg border"
+                        style={{
+                          backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.02)',
+                          borderColor: colors.borderColor,
+                          color: colors.mutedText
+                        }}
                       >
-                        <ChevronRight className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <ChevronRight className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
                         <span>{imp}</span>
                       </li>
                     ))}
@@ -606,14 +670,25 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
             </div>
 
             {/* Modal footer anchor trigger links */}
-            <div className="p-6 border-t border-dashed bg-slate-950/40 shrink-0 flex items-center gap-3" style={{ borderColor: colors.borderColor }}>
+            <div 
+              className="p-6 border-t border-dashed shrink-0 flex items-center gap-3" 
+              style={{ 
+                backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.4)' : 'rgba(15, 23, 42, 0.02)', 
+                borderColor: colors.borderColor 
+              }}
+            >
               <a
                 href={selectedProject.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border text-xs font-mono font-bold bg-slate-900 border-slate-800 text-white transition-all hover:bg-slate-950 focus:outline-none"
+                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border text-xs font-mono font-bold transition-all focus:outline-none"
+                style={{
+                  backgroundColor: theme === 'aurora' ? '#0f172a' : '#ffffff',
+                  borderColor: colors.borderColor,
+                  color: colors.text
+                }}
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-4 h-4 text-indigo-500 dark:text-white" />
                 <span>View Source Repository</span>
               </a>
 
@@ -622,7 +697,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ colors, theme }) => 
                   href={selectedProject.demoUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-mono font-bold bg-indigo-500 text-white transition-all hover:bg-indigo-600 focus:outline-none"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-mono font-bold bg-indigo-600 dark:bg-indigo-500 text-white transition-all hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none"
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>Execute Live Demo</span>

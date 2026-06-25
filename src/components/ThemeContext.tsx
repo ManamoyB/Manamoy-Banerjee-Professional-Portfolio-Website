@@ -73,14 +73,14 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       }
     : {
         bg: '#F8FAFC',
-        primary: '#FF6B35',
-        secondary: '#6C63FF',
-        accent: '#00B894',
-        highlight: '#FDCB6E',
-        text: '#111827',
-        cardBg: 'rgba(255, 255, 255, 0.85)',
-        borderColor: 'rgba(255, 107, 53, 0.15)',
-        mutedText: '#64748B'
+        primary: '#DF4D1A', // Deeper, extra-high contrast orange-red for light mode
+        secondary: '#4F46E5', // High-contrast rich indigo for secondary accents
+        accent: '#047857', // High-contrast deep emerald
+        highlight: '#D97706', // Strong high-contrast warm amber
+        text: '#0F172A', // Extremely dark Slate 900 for absolute contrast
+        cardBg: 'rgba(255, 255, 255, 0.96)', // Solid high-contrast opaque cards
+        borderColor: 'rgba(15, 23, 42, 0.15)', // Highly clear slate boundaries
+        mutedText: '#334155' // Slate 700 instead of 500 for crisp, high-density legibility
       };
 
   return (

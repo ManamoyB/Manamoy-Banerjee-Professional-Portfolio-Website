@@ -420,7 +420,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ colors, theme }) => {
                     placeholder="student@university.edu"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full text-xxs font-mono p-2 border rounded-lg bg-slate-900 border-indigo-500/20 focus:outline-none focus:border-indigo-500 text-center"
+                    className={`w-full text-xxs font-mono p-2 border rounded-lg focus:outline-none focus:border-indigo-500 text-center ${theme === 'aurora' ? 'bg-slate-900 border-indigo-500/20 text-slate-100' : 'bg-white border-slate-200 text-slate-900'}`}
                     required
                   />
                   <button 
@@ -494,7 +494,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ colors, theme }) => {
                   placeholder="Query syntax, codes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 border text-xxs font-mono rounded-full focus:outline-none focus:border-indigo-500 bg-slate-900"
+                  className={`w-full pl-9 pr-4 py-2 border text-xxs font-mono rounded-full focus:outline-none focus:border-indigo-500 ${theme === 'aurora' ? 'bg-slate-900' : 'bg-white shadow-sm'}`}
                   style={{ borderColor: colors.borderColor, color: colors.text }}
                 />
               </div>
@@ -713,8 +713,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ colors, theme }) => {
                 </div>
                 
                 <div className="space-y-1">
-                  <h4 className="text-xs font-black uppercase tracking-wider text-slate-200">Undergraduate newsletter</h4>
-                  <p className="text-[11px] leading-relaxed text-slate-400">
+                  <h4 className="text-xs font-black uppercase tracking-wider animate-fade-in" style={{ color: colors.text }}>Undergraduate newsletter</h4>
+                  <p className="text-[11px] leading-relaxed font-semibold" style={{ color: colors.mutedText }}>
                     Get regular computer science notebooks, mathematical derivation breakdowns, and SDE placement coordinates directly.
                   </p>
                 </div>
@@ -731,7 +731,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ colors, theme }) => {
                       placeholder="student@university.edu"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full text-xxs font-mono p-2.5 border rounded-lg bg-slate-900 border-indigo-500/20 focus:outline-none focus:border-indigo-400"
+                      className={`w-full text-xxs font-mono p-2.5 border rounded-lg focus:outline-none focus:border-indigo-400 ${theme === 'aurora' ? 'bg-slate-900 border-indigo-500/20 text-slate-100' : 'bg-white border-slate-200 text-slate-900'}`}
                       required
                     />
                     <button 

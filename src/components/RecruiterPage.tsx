@@ -189,72 +189,129 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
       
       {/* 1. HERO HEADER: "Why Hire Manamoy Banerjee?" */}
       <div 
-        className="rounded-3xl border p-8 sm:p-12 relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-950 to-slate-950 shadow-2xl" 
-        style={{ borderColor: colors.borderColor }}
+        className="rounded-3xl border p-8 sm:p-12 relative overflow-hidden shadow-2xl transition-all" 
+        style={{ 
+          borderColor: colors.borderColor,
+          background: theme === 'aurora' 
+            ? 'linear-gradient(to right, #0a0e1a, #03050c)' 
+            : 'linear-gradient(to right, #f1f5f9, #f8fafc)'
+        }}
       >
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[140px] bg-indigo-500/10 pointer-events-none -translate-y-10" />
         <div className="absolute bottom-0 left-20 w-44 h-44 rounded-full blur-[110px] bg-emerald-500/5 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col xl:flex-row gap-8 justify-between items-start xl:items-center">
           <div className="space-y-5 flex-1 max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[9px] font-mono tracking-wider uppercase bg-emerald-500/5 border-emerald-500/20 text-emerald-400">
+            <span 
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-mono tracking-wider uppercase font-extrabold"
+              style={{
+                backgroundColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.08)' : 'rgba(4, 120, 87, 0.08)',
+                borderColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(4, 120, 87, 0.25)',
+                color: theme === 'aurora' ? '#34d399' : '#047857'
+              }}
+            >
               <ClipboardCheck className="w-3.5 h-3.5" />
               <span>Fast-Track Recruiter Hub</span>
             </span>
             
             <h2 className="text-3xl sm:text-6xl font-black tracking-tight leading-none" style={{ color: colors.text }}>
               Why Hire <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-300 bg-clip-text text-transparent">Manamoy Banerjee?</span>
+              <span className="bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-indigo-300 bg-clip-text text-transparent">Manamoy Banerjee?</span>
             </h2>
             
-            <p className="text-xs sm:text-base text-slate-400 font-sans leading-relaxed">
+            <p 
+              className="text-sm sm:text-[17px] font-bold leading-relaxed"
+              style={{ color: colors.mutedText }}
+            >
               I align sports captaincy strategies (State-level coordination) with rigorous academic computer science. Specialized in custom convolutional deep learning pipelines and high-speed sql analysis, I construct elegant products that translate raw unstructured data into clean production tools.
             </p>
 
             {/* Availability Badge row */}
             <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-3 py-1 rounded-full border text-[9px] font-mono bg-slate-950 text-slate-300 border-slate-800 flex items-center gap-1">
-                <MapPin className="w-3 h-3 text-indigo-400" />
+              <span 
+                className="px-3.5 py-1.5 rounded-full border text-[11px] font-mono font-bold flex items-center gap-1 transition-colors shadow-sm"
+                style={{
+                  backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                  borderColor: colors.borderColor,
+                  color: colors.text
+                }}
+              >
+                <MapPin className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
                 <span>Chennai Area / Onsite / Remote</span>
               </span>
-              <span className="px-3 py-1 rounded-full border text-[9px] font-mono bg-indigo-500/5 text-indigo-300 border-indigo-500/10 flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-indigo-400" />
+              <span 
+                className="px-3.5 py-1.5 rounded-full border text-[11px] font-mono font-bold flex items-center gap-1 transition-colors shadow-sm"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(79, 70, 229, 0.08)',
+                  borderColor: colors.borderColor,
+                  color: theme === 'aurora' ? '#cbd5e1' : '#4f46e5'
+                }}
+              >
+                <Calendar className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
                 <span>Immediate Engagement Opportunity</span>
               </span>
             </div>
 
             {/* Real-time Recruiter Trust Signals */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">
-                <span className="text-[8px] font-mono uppercase text-slate-500 block">Typical Response</span>
-                <span className="text-xxs font-bold text-emerald-400">&lt; 2 Hours</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+              <div 
+                className="p-3.5 rounded-xl border transition-colors shadow-sm"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.6)' : '#ffffff',
+                  borderColor: colors.borderColor
+                }}
+              >
+                <span className="text-[10px] font-mono font-black uppercase text-slate-500 dark:text-slate-400 block pb-1">Typical Response</span>
+                <span className="text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-400">&lt; 2 Hours</span>
               </div>
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">
-                <span className="text-[8px] font-mono uppercase text-slate-500 block">General Status</span>
-                <span className="text-xxs font-bold text-indigo-400">Open to Opportunities</span>
+              <div 
+                className="p-3.5 rounded-xl border transition-colors shadow-sm"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.6)' : '#ffffff',
+                  borderColor: colors.borderColor
+                }}
+              >
+                <span className="text-[10px] font-mono font-black uppercase text-slate-500 dark:text-slate-400 block pb-1">General Status</span>
+                <span className="text-xs sm:text-sm font-black text-indigo-600 dark:text-indigo-400">Open to Opportunities</span>
               </div>
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">
-                <span className="text-[8px] font-mono uppercase text-slate-500 block">Resume Updated</span>
-                <span className="text-xxs font-bold text-slate-300">Today</span>
+              <div 
+                className="p-3.5 rounded-xl border transition-colors shadow-sm"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.6)' : '#ffffff',
+                  borderColor: colors.borderColor
+                }}
+              >
+                <span className="text-[10px] font-mono font-black uppercase text-slate-500 dark:text-slate-400 block pb-1">Resume Updated</span>
+                <span className="text-xs sm:text-sm font-black text-slate-800 dark:text-slate-300">Today</span>
               </div>
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">
-                <span className="text-[8px] font-mono uppercase text-slate-500 block">Last Active Project</span>
-                <span className="text-xxs font-bold text-purple-400">Shipped 2 days ago</span>
+              <div 
+                className="p-3.5 rounded-xl border transition-colors shadow-sm"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.6)' : '#ffffff',
+                  borderColor: colors.borderColor
+                }}
+              >
+                <span className="text-[10px] font-mono font-black uppercase text-slate-500 dark:text-slate-400 block pb-1">Last Active Project</span>
+                <span className="text-xs sm:text-sm font-black text-purple-600 dark:text-purple-400 font-bold">Shipped 2 days ago</span>
               </div>
             </div>
           </div>
 
           {/* Quick Stats Grid Summarizers (3 indicators) */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full xl:w-auto shrink-0">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full xl:w-auto shrink-0 animate-fade-in">
             {summaries.map((s, idx) => (
               <div 
                 key={idx} 
-                className="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 text-center space-y-1 relative overflow-hidden group shadow-md"
+                className="p-5 rounded-2xl border text-center space-y-1 relative overflow-hidden group shadow-md transition-all hover:shadow-lg"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.8)' : '#ffffff',
+                  borderColor: colors.borderColor
+                }}
               >
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${s.vibe}`} />
-                <span className="text-xl sm:text-2xl font-black block text-indigo-400">{s.metric}</span>
-                <span className="text-[10px] font-mono text-slate-100 font-bold block">{s.label}</span>
-                <span className="text-[9px] text-slate-500 block">{s.info}</span>
+                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${s.vibe}`} />
+                <span className="text-2xl sm:text-3xl font-black block text-indigo-600 dark:text-indigo-400">{s.metric}</span>
+                <span className="text-xs font-black block" style={{ color: colors.text }}>{s.label}</span>
+                <span className="text-[10px] font-bold block" style={{ color: colors.mutedText }}>{s.info}</span>
               </div>
             ))}
           </div>
@@ -274,27 +331,50 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
         >
           <div className="absolute top-0 right-0 w-24 h-24 rounded-full blur-[40px] bg-indigo-500/10 pointer-events-none" />
           <div className="border-b border-dashed pb-4" style={{ borderColor: colors.borderColor }}>
-            <span className="text-[8px] font-mono text-slate-500 uppercase tracking-widest block">Candidate Verification Stamp</span>
+            <span className="text-[10px] font-mono uppercase tracking-widest block font-bold" style={{ color: colors.mutedText }}>Candidate Verification Stamp</span>
             <div className="flex justify-between items-center mt-1">
-              <h3 className="text-lg font-black text-slate-100" style={{ color: colors.text }}>Profile Quick Check</h3>
-              <span className="text-[9px] font-mono bg-emerald-500/5 text-emerald-400 rounded px-2 py-0.5 border border-emerald-500/25">ACTIVE FOR RESUME</span>
+              <h3 className="text-xl font-bold" style={{ color: colors.text }}>Profile Quick Check</h3>
+              <span 
+                className="text-[10px] font-mono rounded px-2.5 py-1 border font-bold"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.08)' : 'rgba(4, 120, 87, 0.08)',
+                  borderColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(4, 120, 87, 0.25)',
+                  color: theme === 'aurora' ? '#34d399' : '#047857'
+                }}
+              >
+                ACTIVE FOR RESUME
+              </span>
             </div>
           </div>
 
           {/* Structured specs ledger */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             
-            {/* Interests Matrix */}
-            <div className="space-y-2">
-              <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500 font-black block">Role Interests</span>
-              <div className="space-y-2">
+            {/* Role Interests Matrix */}
+            <div className="space-y-2.5">
+              <span className="text-[11px] font-mono uppercase tracking-wider font-extrabold block" style={{ color: colors.text }}>Role Interests</span>
+              <div className="space-y-3">
                 {coreInterests.map((r, i) => (
-                  <div key={i} className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center hover:border-slate-700 transition-colors">
+                  <div 
+                    key={i} 
+                    className="p-3.5 rounded-xl border flex justify-between items-center transition-all hover:shadow-sm"
+                    style={{
+                      backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                      borderColor: colors.borderColor
+                    }}
+                  >
                     <div>
-                      <span className="text-xs font-bold text-slate-200 block">{r.title}</span>
-                      <span className="text-[9px] text-slate-500 leading-none block pt-0.5">{r.desc}</span>
+                      <span className="text-sm font-black block" style={{ color: colors.text }}>{r.title}</span>
+                      <span className="text-[11px] font-bold leading-normal block pt-0.5" style={{ color: colors.mutedText }}>{r.desc}</span>
                     </div>
-                    <span className="text-[8px] font-mono font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded">
+                    <span 
+                      className="text-[9px] font-mono font-extrabold border px-2 py-0.5 rounded uppercase shrink-0"
+                      style={{
+                        backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(79, 70, 229, 0.08)',
+                        borderColor: colors.borderColor,
+                        color: colors.primary
+                      }}
+                    >
                       {r.status}
                     </span>
                   </div>
@@ -303,26 +383,32 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
             </div>
 
             {/* Academic profile */}
-            <div className="space-y-1.5 p-4 bg-slate-950 rounded-2xl border border-slate-800 text-xs">
-              <div className="flex justify-between items-center text-[10px] font-mono text-slate-500 border-b border-dashed border-slate-800 pb-1.5 mb-1.5">
+            <div 
+              className="space-y-2 p-5 rounded-2xl border text-xs shadow-sm transition-colors"
+              style={{
+                backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                borderColor: colors.borderColor
+              }}
+            >
+              <div className="flex justify-between items-center text-[10px] font-mono border-b border-dashed pb-2 mb-2 font-bold" style={{ borderColor: colors.borderColor, color: colors.mutedText }}>
                 <span>EDUCATION ACCREDITATION</span>
                 <span>SRM SPEC</span>
               </div>
-              <div className="flex justify-between py-1">
-                <span className="text-slate-400 font-mono">Institution:</span>
-                <span className="text-slate-100 font-bold">SRM Institute</span>
+              <div className="flex justify-between py-1 border-b border-dashed" style={{ borderColor: colors.borderColor }}>
+                <span className="font-mono font-bold" style={{ color: colors.mutedText }}>Institution:</span>
+                <span className="font-black text-sm" style={{ color: colors.text }}>SRM Institute</span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-dashed" style={{ borderColor: colors.borderColor }}>
+                <span className="font-mono font-bold" style={{ color: colors.mutedText }}>Discipline:</span>
+                <span className="font-black text-xs" style={{ color: colors.text }}>B.Tech Computer Science</span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-dashed" style={{ borderColor: colors.borderColor }}>
+                <span className="font-mono font-bold" style={{ color: colors.mutedText }}>GPA Score:</span>
+                <span className="text-indigo-600 dark:text-indigo-400 font-black text-sm">8.20 / 10 CGPA</span>
               </div>
               <div className="flex justify-between py-1">
-                <span className="text-slate-400 font-mono">Discipline:</span>
-                <span className="text-slate-100 font-bold">B.Tech Computer Science</span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span className="text-slate-400 font-mono">GPA Score:</span>
-                <span className="text-indigo-400 font-bold">8.20 / 10 CGPA</span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span className="text-slate-400 font-mono">Target Graduation:</span>
-                <span className="text-slate-100">May 2025</span>
+                <span className="font-mono font-bold" style={{ color: colors.mutedText }}>Target Graduation:</span>
+                <span className="font-black" style={{ color: colors.text }}>May 2025</span>
               </div>
             </div>
 
@@ -330,10 +416,10 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
             <div className="pt-2">
               <button
                 onClick={handleDownload}
-                className={`w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-mono font-bold text-xs transition-all shadow cursor-pointer ${
+                className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl font-mono font-extrabold text-xs transition-all shadow-md cursor-pointer hover:shadow-lg ${
                   downloadSuccess 
                     ? 'bg-emerald-500 text-slate-950' 
-                    : 'bg-indigo-500 hover:bg-indigo-600 text-white'
+                    : 'bg-indigo-600 hover:bg-indigo-700 text-white'
                 }`}
               >
                 {downloadSuccess ? (
@@ -348,7 +434,7 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
                   </>
                 )}
               </button>
-              <div className="flex justify-between text-[8px] font-mono text-slate-500 mt-1.5 px-2">
+              <div className="flex justify-between text-[9px] font-mono mt-2 px-2 font-bold" style={{ color: colors.mutedText }}>
                 <span>FORMAT: ZIP VERIFIED brief</span>
                 <span>SIZE: 1.25 MB</span>
               </div>
@@ -358,17 +444,17 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
         </div>
 
         {/* Competency contribution matrices (7 Columns) */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="lg:col-span-7 space-y-6 animate-fade-in">
           
           <div 
-            className="rounded-3xl border p-6 sm:p-8 space-y-6 relative overflow-hidden"
+            className="rounded-3xl border p-6 sm:p-8 space-y-6 relative overflow-hidden shadow-xl"
             style={{ 
               borderColor: colors.borderColor,
               backgroundColor: colors.cardBg 
             }}
           >
             <div className="border-b border-dashed pb-4" style={{ borderColor: colors.borderColor }}>
-              <span className="text-[8px] font-mono text-slate-500 uppercase tracking-widest block">Executive Competence Matrix</span>
+              <span className="text-[10px] font-mono uppercase tracking-widest block font-bold" style={{ color: colors.mutedText }}>Executive Competence Matrix</span>
               <h3 className="text-xl sm:text-2xl font-black mt-1" style={{ color: colors.text }}>
                 What I Can Contribute
               </h3>
@@ -379,28 +465,50 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
               {contributions.map((c) => {
                 const MIcon = c.icon;
                 return (
-                  <div key={c.id} className="p-4 bg-slate-950/40 rounded-2xl border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between">
-                    <div className="space-y-2">
+                  <div 
+                    key={c.id} 
+                    className="p-5 rounded-2xl border transition-all hover:shadow-md flex flex-col justify-between"
+                    style={{
+                      backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : '#ffffff',
+                      borderColor: colors.borderColor
+                    }}
+                  >
+                    <div className="space-y-3.5">
                       <div className="flex justify-between items-center">
-                        <div className={`p-2 rounded-xl flex items-center justify-center border border-slate-800/80 ${c.color} shrink-0`}>
-                          <MIcon className="w-4 h-4" />
+                        <div 
+                          className={`p-2 rounded-xl flex items-center justify-center border shrink-0`}
+                          style={{
+                            backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(79, 70, 229, 0.08)',
+                            borderColor: colors.borderColor
+                          }}
+                        >
+                          <MIcon className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                         </div>
-                        <span className="text-[8px] font-mono font-bold text-indigo-400 bg-indigo-500/5 px-2 py-0.5 rounded border border-indigo-500/25">
+                        <span 
+                          className="text-[9px] font-mono font-extrabold px-2.5 py-1 rounded border shadow-sm"
+                          style={{
+                            backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(7, 80, 220, 0.05)',
+                            borderColor: colors.borderColor,
+                            color: colors.primary
+                          }}
+                        >
                           {c.badge}
                         </span>
                       </div>
 
-                      <h4 className="text-sm font-black text-slate-200 mt-1">{c.title}</h4>
-                      <span className="text-[10px] text-slate-400 font-mono block leading-none">{c.headline}</span>
+                      <div>
+                        <h4 className="text-sm font-black mt-1" style={{ color: colors.text }}>{c.title}</h4>
+                        <span className="text-[10px] uppercase font-mono block leading-none font-bold" style={{ color: colors.mutedText }}>{c.headline}</span>
+                      </div>
                     </div>
 
-                    <div className="space-y-1.5 pt-3 border-t border-dashed border-slate-800 mt-3 text-[11px] text-slate-400">
+                    <div className="space-y-2 pt-3.5 border-t border-dashed mt-4 text-xs font-bold" style={{ borderColor: colors.borderColor, color: colors.mutedText }}>
                       <p className="flex items-start gap-1.5 leading-relaxed">
-                        <span className="text-indigo-400 font-bold mt-0.5">•</span>
+                        <span className="text-indigo-600 dark:text-indigo-400 font-extrabold mt-0.5">•</span>
                         <span>{c.point_1}</span>
                       </p>
                       <p className="flex items-start gap-1.5 leading-relaxed">
-                        <span className="text-indigo-400 font-bold mt-0.5">•</span>
+                        <span className="text-indigo-600 dark:text-indigo-400 font-extrabold mt-0.5">•</span>
                         <span>{c.point_2}</span>
                       </p>
                     </div>
@@ -411,18 +519,34 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
 
             {/* Secondary Project Highlights overview */}
             <div className="space-y-3 pt-3 border-t border-dashed" style={{ borderColor: colors.borderColor }}>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-indigo-500" />
+              <span className="text-[11px] font-mono uppercase tracking-wider font-extrabold flex items-center gap-1.5" style={{ color: colors.text }}>
+                <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
                 Featured Project Sprints
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {projectSnippets.map((p, idx) => (
-                  <div key={idx} className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-xxs">
-                    <div className="flex justify-between items-center">
-                      <strong className="text-slate-200">{p.title}</strong>
-                      <span className="text-[8px] font-mono text-emerald-400 bg-emerald-500/5 px-1 rounded border border-emerald-500/20">{p.impact}</span>
+                  <div 
+                    key={idx} 
+                    className="p-4 rounded-xl border text-xs shadow-sm transition-colors"
+                    style={{
+                      backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                      borderColor: colors.borderColor
+                    }}
+                  >
+                    <div className="flex justify-between items-center pb-1">
+                      <strong className="font-extrabold" style={{ color: colors.text }}>{p.title}</strong>
+                      <span 
+                        className="text-[9px] font-mono px-2 py-0.5 rounded border font-bold shrink-0"
+                        style={{
+                          backgroundColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.08)' : 'rgba(4, 120, 87, 0.08)',
+                          borderColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(4, 120, 87, 0.25)',
+                          color: theme === 'aurora' ? '#cbd5e1' : '#047857'
+                        }}
+                      >
+                        {p.impact}
+                      </span>
                     </div>
-                    <p className="text-slate-400 font-sans mt-1">{p.desc}</p>
+                    <p className="font-bold text-xs leading-normal mt-1" style={{ color: colors.mutedText }}>{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -436,37 +560,47 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
 
       {/* 3. RECRUITER SECRET WEAPON: THE ATS KEYWORD RELEVANCE MATCHER */}
       <div 
-        className="rounded-3xl border p-6 sm:p-8 relative overflow-hidden bg-gradient-to-r from-indigo-950/20 via-slate-950 to-slate-950 shadow-lg"
-        style={{ borderColor: colors.borderColor }}
+        className="rounded-3xl border p-6 sm:p-10 relative overflow-hidden shadow-lg transition-all"
+        style={{ 
+          borderColor: colors.borderColor,
+          background: theme === 'aurora' 
+            ? 'linear-gradient(to right, rgba(99, 102, 241, 0.1), #080b14)' 
+            : 'linear-gradient(to right, rgba(223, 77, 26, 0.04), #ffffff)'
+        }}
       >
         <div className="absolute top-0 left-0 w-32 h-32 rounded-full blur-2xl bg-indigo-500/10 pointer-events-none" />
         
-        <div className="max-w-3xl space-y-4">
+        <div className="max-w-3xl space-y-4 relative z-10">
           <div className="space-y-1">
-            <span className="text-[8.5px] font-mono uppercase tracking-widest text-indigo-400 font-bold block">
+            <span className="text-[11px] font-mono uppercase tracking-widest font-black block" style={{ color: theme === 'aurora' ? '#cbd5e1' : colors.primary }}>
               ATS MATCH SIMULATION PORTAL
             </span>
-            <h3 className="text-xl font-black text-slate-100" style={{ color: colors.text }}>
+            <h3 className="text-2xl font-black mt-1" style={{ color: colors.text }}>
               Test ATS Alignment Instantly
             </h3>
-            <p className="text-xs text-slate-400 font-sans leading-relaxed">
-              Have a specific stack or job role context? Paste keywords below (e.g., <code className="text-indigo-300 font-mono text-xxs">python, sql, machines, analysis, react</code>) to test compiler alignment factors in real-time.
+            <p className="text-sm font-semibold leading-relaxed mt-2" style={{ color: colors.mutedText }}>
+              Have a specific stack or job role context? Paste keywords below (e.g., <code className="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">python, sql, machines, analysis, react</code>) to test compiler alignment factors in real-time.
             </p>
           </div>
 
-          <form onSubmit={handleRunAtsCheck} className="flex flex-col sm:flex-row gap-2 max-w-xl">
+          <form onSubmit={handleRunAtsCheck} className="flex flex-col sm:flex-row gap-3 max-w-xl pt-2">
             <input
               type="text"
               placeholder="Paste job description snippets or technology queries here..."
               value={atsKeyword}
               onChange={(e) => setAtsKeyword(e.target.value)}
-              className="flex-1 px-4 py-2 border text-xxs font-mono rounded-xl focus:outline-none focus:border-indigo-500 bg-slate-900 border-slate-700 text-slate-100"
+              className="flex-1 px-4 py-3 border text-xs font-mono rounded-xl focus:outline-none focus:border-indigo-500 outline-none transition-all shadow-inner"
+              style={{
+                backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                borderColor: colors.borderColor,
+                color: colors.text
+              }}
             />
             <button
               type="submit"
-              className="px-5 py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl text-xxs font-mono font-bold transition-all shrink-0 cursor-pointer shadow flex items-center justify-center gap-1.5"
+              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-mono font-black transition-all shrink-0 cursor-pointer shadow flex items-center justify-center gap-1.5"
             >
-              <Zap className="w-3.5 h-3.5" />
+              <Zap className="w-4 h-4" />
               <span>Verify Score Relevance</span>
             </button>
           </form>
@@ -478,22 +612,43 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="p-5 bg-slate-950 border border-slate-800 rounded-2xl flex flex-col sm:flex-row gap-5 items-stretch sm:items-center max-w-xl"
+                className="p-5 border rounded-2xl flex flex-col sm:flex-row gap-5 items-stretch sm:items-center max-w-xl shadow-md transition-colors"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(2, 6, 23, 0.8)' : '#ffffff',
+                  borderColor: colors.borderColor
+                }}
               >
                 {/* Radial metric */}
-                <div className="w-20 h-20 rounded-full border-4 border-indigo-500/30 flex items-center justify-center font-mono font-black text-lg text-indigo-400 shrink-0 bg-indigo-500/5 relative">
-                  <div className="absolute inset-0.5 rounded-full border-2 border-indigo-400 p-1" />
+                <div 
+                  className="w-20 h-20 rounded-full border-4 flex items-center justify-center font-mono font-black text-xl shrink-0 relative transition-colors"
+                  style={{
+                    backgroundColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.05)' : 'rgba(79, 70, 229, 0.05)',
+                    borderColor: theme === 'aurora' ? 'rgba(99, 102, 241, 0.3)' : 'rgba(79, 70, 229, 0.3)',
+                    color: colors.primary
+                  }}
+                >
+                  <div className="absolute inset-0.5 rounded-full border-2 border-indigo-500/40 p-1" />
                   <span>{atsScore}%</span>
                 </div>
 
-                <div className="space-y-1 text-xs">
-                  <strong className="text-slate-100 font-black block">ATS Match Result Status: {atsScore > 80 ? 'EXCELLENT' : 'RELEVANT'}</strong>
-                  <p className="text-[11px] text-slate-400 leading-relaxed font-sans mt-0.5">
+                <div className="space-y-1.5 text-xs">
+                  <strong className="font-extrabold text-sm block" style={{ color: colors.text }}>
+                    ATS Match Result Status: {atsScore > 80 ? 'EXCELLENT' : 'RELEVANT'}
+                  </strong>
+                  <p className="font-bold text-xs leading-relaxed" style={{ color: colors.mutedText }}>
                     Matches discovered against Manamoy's core verified skills database index columns:
                   </p>
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {matchedKeywords.map((tech, i) => (
-                      <span key={i} className="text-[8px] font-mono px-2 py-0.5 rounded bg-emerald-500/5 border border-emerald-500/25 text-emerald-400">
+                      <span 
+                        key={i} 
+                        className="text-[9px] font-mono px-2 py-0.5 rounded border font-semibold"
+                        style={{
+                          backgroundColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.08)' : 'rgba(4, 120, 87, 0.08)',
+                          borderColor: theme === 'aurora' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(4, 120, 87, 0.25)',
+                          color: theme === 'aurora' ? '#34d399' : '#047857'
+                        }}
+                      >
                         {tech.toUpperCase()}
                       </span>
                     ))}
@@ -507,37 +662,49 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
 
       {/* 4. HIGH CONVERSION CONTACT CTA BOX */}
       <div 
-        className="rounded-3xl border p-8 sm:p-10 relative overflow-hidden bg-gradient-to-r from-indigo-950 via-slate-950 to-slate-950 shadow-2xl"
-        style={{ borderColor: colors.borderColor }}
+        className="rounded-3xl border p-8 sm:p-12 relative overflow-hidden shadow-2xl transition-all"
+        style={{ 
+          borderColor: colors.borderColor,
+          background: theme === 'aurora' 
+            ? 'linear-gradient(to right, #0a0e1a, #03050c)' 
+            : 'linear-gradient(to right, #f1f5f9, #f8fafc)'
+        }}
       >
         <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[125px] bg-emerald-500/10 pointer-events-none -translate-y-10" />
         
         <div className="relative z-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <span className="inline-flex items-center gap-1 text-[8.5px] font-mono font-bold uppercase tracking-widest text-emerald-400">
-              <PhoneCall className="w-3.5 h-3.5" />
+          <div className="space-y-4">
+            <span 
+              className="inline-flex items-center gap-1.5 font-mono font-black uppercase tracking-widest"
+              style={{ color: theme === 'aurora' ? '#34d399' : '#047857' }}
+            >
+              <PhoneCall className="w-4 h-4 animate-bounce" />
               <span>Conclude Engagement Search</span>
             </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-100" style={{ color: colors.text }}>
+            <h3 className="text-3xl sm:text-4xl font-extrabold leading-none" style={{ color: colors.text }}>
               Secure Manamoy Banerjee Today
             </h3>
-            <p className="text-xs text-slate-400 max-w-xl font-sans leading-relaxed">
+            <p className="text-sm sm:text-base font-bold leading-relaxed max-w-xl" style={{ color: colors.mutedText }}>
               Ready to setup a brief technical introduction or interview scheduling sprint? Click nodes below to retrieve verified certificates or launch instant messages.
             </p>
           </div>
 
           {/* CTA Link blocks */}
-          <div className="flex flex-wrap md:flex-col gap-2 shrink-0">
+          <div className="flex flex-col gap-3 shrink-0 min-w-[280px]">
             {/* Email */}
             <a
               href="mailto:manamoyraja@gmail.com?subject=Technical Interview Proposal - Manamoy Banerjee"
-              className="flex items-center justify-between gap-4 p-3 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:bg-slate-900 rounded-xl transition-all font-mono text-xxs block group"
+              className="flex items-center justify-between gap-4 p-4 border hover:border-indigo-500/50 hover:shadow-md rounded-xl transition-all font-mono text-xs block group"
+              style={{
+                backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                borderColor: colors.borderColor
+              }}
             >
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-indigo-400 group-hover:scale-105 transition-transform" />
-                <span className="text-slate-300">manamoyraja@gmail.com</span>
+                <Mail className="w-4 h-4 text-indigo-500 dark:text-indigo-400 group-hover:scale-105 transition-transform" />
+                <span className="font-bold" style={{ color: colors.text }}>manamoyraja@gmail.com</span>
               </div>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+              <ChevronRight className="w-4 h-4 text-slate-500" />
             </a>
 
             {/* LinkedIn */}
@@ -545,13 +712,17 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
               href="https://www.linkedin.com/in/manamoy-banerjee-085732223/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between gap-4 p-3 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:bg-slate-900 rounded-xl transition-all font-mono text-xxs block group"
+              className="flex items-center justify-between gap-4 p-4 border hover:border-indigo-500/50 hover:shadow-md rounded-xl transition-all font-mono text-xs block group"
+              style={{
+                backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                borderColor: colors.borderColor
+              }}
             >
               <div className="flex items-center gap-2.5">
-                <Linkedin className="w-4 h-4 text-indigo-400 group-hover:scale-105 transition-transform" />
-                <span className="text-slate-300">manamoy-banerjee-085732223</span>
+                <Linkedin className="w-4 h-4 text-indigo-500 dark:text-indigo-400 group-hover:scale-105 transition-transform" />
+                <span className="font-bold" style={{ color: colors.text }}>manamoy-banerjee-085732223</span>
               </div>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+              <ChevronRight className="w-4 h-4 text-slate-500" />
             </a>
 
             {/* GitHub */}
@@ -559,19 +730,23 @@ export const RecruiterPage: React.FC<RecruiterPageProps> = ({ colors, theme }) =
               href="https://github.com/manamoy"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between gap-4 p-3 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:bg-slate-900 rounded-xl transition-all font-mono text-xxs block group"
+              className="flex items-center justify-between gap-4 p-4 border hover:border-indigo-500/50 hover:shadow-md rounded-xl transition-all font-mono text-xs block group"
+              style={{
+                backgroundColor: theme === 'aurora' ? '#020617' : '#ffffff',
+                borderColor: colors.borderColor
+              }}
             >
               <div className="flex items-center gap-2.5">
-                <Github className="w-4 h-4 text-indigo-400 group-hover:scale-105 transition-transform" />
-                <span className="text-slate-300">github.com/manamoy</span>
+                <Github className="w-4 h-4 text-indigo-500 dark:text-indigo-400 group-hover:scale-105 transition-transform" />
+                <span className="font-bold" style={{ color: colors.text }}>github.com/manamoy</span>
               </div>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+              <ChevronRight className="w-4 h-4 text-slate-500" />
             </a>
           </div>
         </div>
 
         {/* HUD system stamps */}
-        <div className="mt-8 border-t border-dashed border-slate-800/80 pt-4 flex justify-between items-center text-[8px] font-mono text-slate-500">
+        <div className="mt-8 border-t border-dashed pt-4 flex justify-between items-center text-[10px] font-mono font-bold" style={{ borderColor: colors.borderColor, color: colors.mutedText }}>
           <span>PORTFOLIO PLATFORM V2.4</span>
           <span>SYST_TOKEN: RECRUIT_LEDGER_AUTHENTICATED</span>
         </div>

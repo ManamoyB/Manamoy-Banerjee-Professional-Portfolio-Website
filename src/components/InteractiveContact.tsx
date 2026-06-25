@@ -184,21 +184,25 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
       
       {/* HERO SECTION: "Let's Connect" */}
       <div 
-        className="rounded-3xl border p-8 sm:p-12 relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-950 to-slate-950 shadow-2xl" 
+        className={`rounded-3xl border p-8 sm:p-12 relative overflow-hidden shadow-2xl ${
+          theme === 'aurora' 
+            ? 'bg-gradient-to-r from-slate-900 via-slate-950 to-slate-950' 
+            : 'bg-gradient-to-r from-indigo-50/40 via-white to-purple-50/40'
+        }`} 
         style={{ borderColor: colors.borderColor }}
       >
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[140px] bg-indigo-500/10 pointer-events-none -translate-y-10" />
         <div className="absolute bottom-0 left-20 w-44 h-44 rounded-full blur-[110px] bg-emerald-500/5 pointer-events-none" />
 
         <div className="relative z-10 space-y-4 max-w-3xl">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[9px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/20 text-indigo-400">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[9px] font-mono tracking-wider uppercase bg-indigo-500/5 border-indigo-500/20 text-indigo-500 dark:text-indigo-400">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Secure Communication Portal</span>
           </span>
           <h2 className="text-3xl sm:text-6xl font-black tracking-tight" style={{ color: colors.text }}>
             Let&apos;s Connect
           </h2>
-          <p className="text-xs sm:text-base text-slate-400 font-sans leading-relaxed">
+          <p className="text-xs sm:text-base font-sans leading-relaxed font-semibold animate-fade-in" style={{ color: colors.mutedText }}>
             Have a project vision, software engineering requirement, or recruitment proposal? Drop a direct message into the compiled form pipeline, check my active availability index, or launch one of my professional profiles below.
           </p>
         </div>
@@ -226,19 +230,19 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
               <div className="space-y-1">
                 <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 block">CURRENT BASE HUB</span>
                 <h4 className="text-sm font-black text-slate-100" style={{ color: colors.text }}>Bangalore, India</h4>
-                <p className="text-xxs text-slate-400 leading-relaxed font-sans">
+                <p className="text-xxs leading-relaxed font-sans font-medium" style={{ color: colors.mutedText }}>
                   Targeting software development & data operations locally in IT industrial hubs. Open to active hybrid relocations.
                 </p>
               </div>
             </div>
 
             {/* Decorative Map Vector mockup */}
-            <div className="mt-4 pt-3 border-t border-dashed border-slate-800 flex justify-between items-center text-[10px] font-mono text-slate-500">
+            <div className="mt-4 pt-3 border-t border-dashed flex justify-between items-center text-[10px] font-mono" style={{ borderColor: colors.borderColor, color: colors.mutedText }}>
               <div className="flex items-center gap-1.5">
                 <Compass className="w-3.5 h-3.5 text-indigo-400" />
                 <span>Lat: 12.9716° N // Lon: 77.5946° E</span>
               </div>
-              <span className="text-[9px] text-emerald-400 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">READY TO RELOCATE</span>
+              <span className="text-[9px] text-emerald-500 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">READY TO RELOCATE</span>
             </div>
           </div>
 
@@ -251,29 +255,33 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
             }}
           >
             <div className="space-y-3">
-              <div className="flex justify-between items-center border-b border-dashed border-slate-800 pb-3">
+              <div className="flex justify-between items-center border-b border-dashed pb-3" style={{ borderColor: colors.borderColor }}>
                 <div className="flex items-center gap-2">
                   <Briefcase className="w-4 h-4 text-indigo-400" />
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-300 font-bold">Availability Index</span>
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold" style={{ color: colors.text }}>Availability Index</span>
                 </div>
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse text-indigo-400" />
               </div>
 
               <div className="space-y-2">
-                <span className="text-[9px] font-mono text-slate-500 uppercase block">Open for:</span>
+                <span className="text-[9px] font-mono uppercase block" style={{ color: colors.mutedText }}>Open for:</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {availabilityOptions.map((opt, i) => (
                     <div 
                       key={i} 
-                      className="p-3 bg-slate-950 rounded-xl border border-slate-800/80 flex items-center justify-between group hover:border-slate-700 transition-colors"
+                      className="p-3 rounded-xl border flex items-center justify-between group transition-colors"
+                      style={{ 
+                        backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.02)',
+                        borderColor: colors.borderColor
+                      }}
                     >
                       <div className="flex items-center gap-2">
                         <div className="w-4 h-4 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-400/20">
                           <Check className="w-2.5 h-2.5" />
                         </div>
-                        <span className="text-xs font-bold text-slate-300">{opt.label}</span>
+                        <span className="text-xs font-bold" style={{ color: colors.text }}>{opt.label}</span>
                       </div>
-                      <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-indigo-500/5 text-indigo-300 border border-indigo-500/20">
+                      <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-indigo-500/5 text-indigo-500 dark:text-indigo-300 border border-indigo-500/20">
                         {opt.badge}
                       </span>
                     </div>
@@ -291,7 +299,7 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
               borderColor: colors.borderColor 
             }}
           >
-            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-black block border-b border-dashed border-slate-800 pb-2">
+            <span className="text-[10px] font-mono uppercase tracking-wider font-black block border-b border-dashed pb-2" style={{ color: colors.text, borderColor: colors.borderColor }}>
               Professional Direct Contacts
             </span>
 
@@ -301,18 +309,22 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
                 href="https://www.linkedin.com/in/manamoy-banerjee-085732223/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3.5 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all cursor-pointer flex items-center justify-between group"
+                className="p-3.5 border hover:border-indigo-500/40 rounded-xl transition-all cursor-pointer flex items-center justify-between group"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(7, 5, 12, 0.6)' : 'rgba(255, 255, 255, 1)',
+                  borderColor: colors.borderColor
+                }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg border border-indigo-500/20 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                  <div className="p-2 bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 rounded-lg border border-indigo-500/20 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
                     <Linkedin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-200 block">LinkedIn Profile</span>
-                    <span className="text-[9px] font-mono text-indigo-300 leading-none">manamoy-banerjee-085732223</span>
+                    <span className="text-xs font-bold block" style={{ color: colors.text }}>LinkedIn Profile</span>
+                    <span className="text-[9px] font-mono text-indigo-500 dark:text-indigo-300 leading-none">manamoy-banerjee-085732223</span>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-500 transition-colors" />
               </a>
 
               {/* GitHub */}
@@ -320,35 +332,43 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
                 href="https://github.com/manamoy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3.5 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl transition-all cursor-pointer flex items-center justify-between group"
+                className="p-3.5 border hover:border-slate-400 rounded-xl transition-all cursor-pointer flex items-center justify-between group"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(7, 5, 12, 0.6)' : 'rgba(255, 255, 255, 1)',
+                  borderColor: colors.borderColor
+                }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-slate-800 text-slate-200 rounded-lg border border-slate-700 group-hover:bg-white group-hover:text-slate-950 transition-colors">
+                  <div className="p-2 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-lg border border-slate-700 group-hover:bg-slate-800 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-950 transition-colors">
                     <Github className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-200 block">GitHub Portfolio</span>
-                    <span className="text-[9px] font-mono text-slate-400 leading-none">github.com/manamoy</span>
+                    <span className="text-xs font-bold block" style={{ color: colors.text }}>GitHub Portfolio</span>
+                    <span className="text-[9px] font-mono leading-none" style={{ color: colors.mutedText }}>github.com/manamoy</span>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-white transition-colors" />
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-neutral-500 dark:group-hover:text-white transition-colors" />
               </a>
 
               {/* Email */}
               <a 
                 href={`mailto:${personalDetails.socialLinks.email}`}
-                className="p-3.5 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all cursor-pointer flex items-center justify-between group"
+                className="p-3.5 border hover:border-indigo-500/40 rounded-xl transition-all cursor-pointer flex items-center justify-between group"
+                style={{
+                  backgroundColor: theme === 'aurora' ? 'rgba(7, 5, 12, 0.6)' : 'rgba(255, 255, 255, 1)',
+                  borderColor: colors.borderColor
+                }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
+                  <div className="p-2 bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 rounded-lg border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-200 block">Direct Email</span>
-                    <span className="text-[9px] font-mono text-emerald-300 leading-none">{personalDetails.socialLinks.email}</span>
+                    <span className="text-xs font-bold block" style={{ color: colors.text }}>Direct Email</span>
+                    <span className="text-[9px] font-mono text-emerald-600 dark:text-emerald-300 leading-none">{personalDetails.socialLinks.email}</span>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-500 transition-colors" />
               </a>
             </div>
           </div>
@@ -367,40 +387,53 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
             {submitSuccess && submittedData ? (
               /* Receipt panel styled exactly as requested and beautifully polished */
               <div className="space-y-6 animate-fade-in">
-                <div className="flex items-start gap-4 border-b border-dashed border-slate-800 pb-4">
-                  <div className="p-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full animate-bounce">
+                <div className="flex items-start gap-4 border-b border-dashed pb-4" style={{ borderColor: colors.borderColor }}>
+                  <div className="p-3 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded-full animate-bounce">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-lg font-black text-slate-100">Message Transmitted!</h4>
-                    <p className="text-xs text-slate-400 font-sans">
+                    <h4 className="text-lg font-black" style={{ color: colors.text }}>Message Transmitted!</h4>
+                    <p className="text-xs font-sans font-medium" style={{ color: colors.mutedText }}>
                       Your form envelope has been processed and submitted through our secure database routines.
                     </p>
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono space-y-3 relative">
-                  <div className="absolute top-2 right-3 text-[8px] text-indigo-400 border border-indigo-500/20 px-1.5 py-0.5 rounded font-bold uppercase">
+                <div 
+                  className="p-5 rounded-2xl border text-xs font-mono space-y-3 relative"
+                  style={{
+                    backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.02)',
+                    borderColor: colors.borderColor
+                  }}
+                >
+                  <div className="absolute top-2 right-3 text-[8px] text-indigo-500 border border-indigo-500/20 px-1.5 py-0.5 rounded font-bold uppercase">
                     ACTIVE RECEIPT
                   </div>
-                  <h5 className="font-extrabold text-indigo-300 uppercase tracking-widest text-[9.5px] border-b border-slate-800 pb-1.5 mb-2">Message Metadata Summary</h5>
+                  <h5 className="font-extrabold text-indigo-500 uppercase tracking-widest text-[9.5px] border-b pb-1.5 mb-2" style={{ borderColor: colors.borderColor }}>Message Metadata Summary</h5>
                   
                   <div className="flex justify-between py-0.5">
-                    <span className="text-slate-500">Sender Name:</span>
-                    <span className="text-slate-100 font-bold">{submittedData.name}</span>
+                    <span style={{ color: colors.mutedText }}>Sender Name:</span>
+                    <span className="font-bold" style={{ color: colors.text }}>{submittedData.name}</span>
                   </div>
                   <div className="flex justify-between py-0.5">
-                    <span className="text-slate-500">Return Email:</span>
-                    <span className="text-slate-100 font-bold">{submittedData.email}</span>
+                    <span style={{ color: colors.mutedText }}>Return Email:</span>
+                    <span className="font-bold" style={{ color: colors.text }}>{submittedData.email}</span>
                   </div>
                   <div className="flex justify-between py-0.5">
-                    <span className="text-slate-500">Subject:</span>
-                    <span className="text-slate-100 font-bold text-right">{submittedData.subject}</span>
+                    <span style={{ color: colors.mutedText }}>Subject:</span>
+                    <span className="font-bold text-right" style={{ color: colors.text }}>{submittedData.subject}</span>
                   </div>
                   
-                  <div className="pt-3 border-t border-slate-800 text-xxs">
-                    <span className="font-extrabold text-slate-400 block mb-1 uppercase tracking-wide">Payload Message:</span>
-                    <p className="text-slate-400 italic font-sans py-2 px-3 bg-slate-900/60 rounded-xl border border-slate-800">
+                  <div className="pt-3 border-t text-xxs" style={{ borderColor: colors.borderColor }}>
+                    <span className="font-extrabold block mb-1 uppercase tracking-wide" style={{ color: colors.mutedText }}>Payload Message:</span>
+                    <p 
+                      className="italic font-sans py-2 px-3 rounded-xl border"
+                      style={{ 
+                        backgroundColor: theme === 'aurora' ? 'rgba(7, 5, 12, 0.4)' : 'rgba(255, 255, 255, 0.9)',
+                        borderColor: colors.borderColor,
+                        color: colors.text
+                      }}
+                    >
                       &quot;{submittedData.message}&quot;
                     </p>
                   </div>
@@ -408,7 +441,12 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
 
                 <button
                   onClick={() => setSubmitSuccess(false)}
-                  className="px-4 py-2 bg-slate-900 hover:bg-slate-850 text-slate-300 text-xs font-mono font-bold rounded-xl border border-slate-800 transition-colors cursor-pointer"
+                  className="px-4 py-2 text-xs font-mono font-bold rounded-xl border transition-colors cursor-pointer"
+                  style={{
+                    backgroundColor: theme === 'aurora' ? '#0f172a' : '#ffffff',
+                    borderColor: colors.borderColor,
+                    color: colors.text
+                  }}
                 >
                   Submit another telemetry block
                 </button>
@@ -416,14 +454,14 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
             ) : (
               /* Contact Form */
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="border-b border-dashed border-slate-800 pb-3 mb-2">
-                  <span className="text-[8px] font-mono text-slate-500 uppercase tracking-widest block font-bold">Transmission Terminal</span>
-                  <h3 className="text-lg font-black text-slate-100 mt-0.5" style={{ color: colors.text }}>Submit Direct Memo</h3>
+                <div className="border-b border-dashed pb-3 mb-2" style={{ borderColor: colors.borderColor }}>
+                  <span className="text-[8px] font-mono uppercase tracking-widest block font-bold" style={{ color: colors.mutedText }}>Transmission Terminal</span>
+                  <h3 className="text-lg font-black mt-0.5" style={{ color: colors.text }}>Submit Direct Memo</h3>
                 </div>
 
                 {/* Name */}
                 <div className="space-y-1.5">
-                  <label htmlFor="name" className="text-xxs font-mono uppercase tracking-wider text-slate-400 block font-bold">Name</label>
+                  <label htmlFor="name" className="text-xxs font-mono uppercase tracking-wider block font-bold" style={{ color: colors.text }}>Name</label>
                   <input
                     type="text"
                     id="name"
@@ -432,8 +470,15 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
                     onChange={handleInputChange}
                     placeholder="Steve Jobs"
                     className={`w-full px-4 py-3 rounded-xl border text-xs outline-none transition-all ${
-                      errors.name ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5' : 'focus:ring-2 focus:ring-indigo-500/20 bg-slate-950 border-slate-800/80 text-slate-200'
+                      errors.name 
+                        ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5 text-red-700 dark:text-red-200' 
+                        : 'focus:ring-2 focus:ring-indigo-500/20'
                     }`}
+                    style={!errors.name ? {
+                      backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.5)' : '#ffffff',
+                      borderColor: colors.borderColor,
+                      color: colors.text
+                    } : undefined}
                   />
                   {errors.name && (
                     <p className="text-[10px] text-red-500 flex items-center gap-1.5 font-mono">
@@ -445,7 +490,7 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
 
                 {/* Email */}
                 <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-xxs font-mono uppercase tracking-wider text-slate-400 block font-bold">Email Address</label>
+                  <label htmlFor="email" className="text-xxs font-mono uppercase tracking-wider block font-bold" style={{ color: colors.text }}>Email Address</label>
                   <input
                     type="email"
                     id="email"
@@ -454,8 +499,15 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
                     onChange={handleInputChange}
                     placeholder="steve@apple.com"
                     className={`w-full px-4 py-3 rounded-xl border text-xs outline-none transition-all ${
-                      errors.email ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5' : 'focus:ring-2 focus:ring-indigo-500/20 bg-slate-950 border-slate-800/80 text-slate-200'
+                      errors.email 
+                        ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5 text-red-700 dark:text-red-200' 
+                        : 'focus:ring-2 focus:ring-indigo-500/20'
                     }`}
+                    style={!errors.email ? {
+                      backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.5)' : '#ffffff',
+                      borderColor: colors.borderColor,
+                      color: colors.text
+                    } : undefined}
                   />
                   {errors.email && (
                     <p className="text-[10px] text-red-500 flex items-center gap-1.5 font-mono">
@@ -467,7 +519,7 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
 
                 {/* Subject */}
                 <div className="space-y-1.5">
-                  <label htmlFor="subject" className="text-xxs font-mono uppercase tracking-wider text-slate-400 block font-bold">Subject</label>
+                  <label htmlFor="subject" className="text-xxs font-mono uppercase tracking-wider block font-bold" style={{ color: colors.text }}>Subject</label>
                   <input
                     type="text"
                     id="subject"
@@ -476,8 +528,15 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
                     onChange={handleInputChange}
                     placeholder="Interview Scheduling / Collaboration Vision"
                     className={`w-full px-4 py-3 rounded-xl border text-xs outline-none transition-all ${
-                      errors.subject ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5' : 'focus:ring-2 focus:ring-indigo-500/20 bg-slate-950 border-slate-800/80 text-slate-200'
+                      errors.subject 
+                        ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5 text-red-700 dark:text-red-200' 
+                        : 'focus:ring-2 focus:ring-indigo-500/20'
                     }`}
+                    style={!errors.subject ? {
+                      backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.5)' : '#ffffff',
+                      borderColor: colors.borderColor,
+                      color: colors.text
+                    } : undefined}
                   />
                   {errors.subject && (
                     <p className="text-[10px] text-red-500 flex items-center gap-1.5 font-mono">
@@ -489,7 +548,7 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
 
                 {/* Message */}
                 <div className="space-y-1.5">
-                  <label htmlFor="message" className="text-xxs font-mono uppercase tracking-wider text-slate-400 block font-bold">Message</label>
+                  <label htmlFor="message" className="text-xxs font-mono uppercase tracking-wider block font-bold" style={{ color: colors.text }}>Message</label>
                   <textarea
                     id="message"
                     name="message"
@@ -498,8 +557,15 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
                     onChange={handleInputChange}
                     placeholder="Explain your proposal details or pipeline scheduling needs here..."
                     className={`w-full px-4 py-3 rounded-xl border text-xs outline-none transition-all resize-none ${
-                      errors.message ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5' : 'focus:ring-2 focus:ring-indigo-500/20 bg-slate-950 border-slate-800/80 text-slate-200'
+                      errors.message 
+                        ? 'border-red-500 focus:ring-1 focus:ring-red-500 bg-red-500/5 text-red-700 dark:text-red-200' 
+                        : 'focus:ring-2 focus:ring-indigo-500/20'
                     }`}
+                    style={!errors.message ? {
+                      backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.5)' : '#ffffff',
+                      borderColor: colors.borderColor,
+                      color: colors.text
+                    } : undefined}
                   />
                   {errors.message && (
                     <p className="text-[10px] text-red-500 flex items-center gap-1.5 font-mono">
@@ -541,21 +607,28 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
           borderColor: colors.borderColor 
         }}
       >
-        <div className="border-b border-dashed border-slate-800 pb-4 mb-4 flex items-center gap-2.5">
+        <div className="border-b border-dashed pb-4 mb-4 flex items-center gap-2.5" style={{ borderColor: colors.borderColor }}>
           <HelpCircle className="w-5 h-5 text-indigo-400" />
-          <h3 className="text-lg font-black text-slate-100" style={{ color: colors.text }}>
+          <h3 className="text-lg font-black" style={{ color: colors.text }}>
             SLA Response & Frequently Asked Questions
           </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {faqs.map((faq, i) => (
-            <div key={i} className="p-4 bg-slate-950/40 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors space-y-2.5">
+            <div 
+              key={i} 
+              className="p-4 rounded-2xl border transition-colors space-y-2.5"
+              style={{
+                backgroundColor: theme === 'aurora' ? 'rgba(15, 23, 42, 0.4)' : 'rgba(255, 255, 255, 1)',
+                borderColor: colors.borderColor
+              }}
+            >
               <div className="flex items-start gap-2">
                 {i === 0 && <Clock className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5 animate-pulse" />}
-                <strong className="text-xs font-mono font-bold text-slate-100 block leading-tight">{faq.q}</strong>
+                <strong className="text-xs font-mono font-bold block leading-tight" style={{ color: colors.text }}>{faq.q}</strong>
               </div>
-              <p className="text-xxs text-slate-400 font-sans leading-relaxed">
+              <p className="text-xxs font-sans leading-relaxed font-semibold animate-fade-in" style={{ color: colors.mutedText }}>
                 {faq.a}
               </p>
             </div>
@@ -565,15 +638,19 @@ export const InteractiveContact: React.FC<InteractiveContactProps> = ({ personal
 
       {/* FOOTER CTA QUOTE BANNER */}
       <div 
-        className="rounded-3xl border p-10 sm:p-14 relative overflow-hidden bg-gradient-to-r from-indigo-950/40 via-slate-950 to-indigo-950/30 text-center shadow-inner"
+        className={`rounded-3xl border p-10 sm:p-14 relative overflow-hidden text-center shadow-inner ${
+          theme === 'aurora' 
+            ? 'bg-gradient-to-r from-indigo-950/40 via-slate-950 to-indigo-950/30' 
+            : 'bg-gradient-to-r from-indigo-50/40 via-white to-purple-50/50'
+        }`}
         style={{ borderColor: colors.borderColor }}
       >
         <div className="absolute top-0 right-1/4 w-72 h-44 rounded-full blur-[100px] bg-indigo-500/10 pointer-events-none -translate-y-4" />
         <div className="relative z-10 max-w-xl mx-auto space-y-4">
-          <h4 className="text-lg sm:text-2xl font-black text-slate-100 tracking-tight leading-snug">
+          <h4 className="text-lg sm:text-2xl font-black tracking-tight leading-snug" style={{ color: colors.text }}>
             &quot;Let&apos;s Build Something Great Together&quot;
           </h4>
-          <p className="text-xxs font-mono text-indigo-400 tracking-widest uppercase block">
+          <p className="text-xxs font-mono text-indigo-500 dark:text-indigo-400 tracking-widest uppercase block">
             VERIFIED PORTFOLIO SPRINT ACCELERATION
           </p>
         </div>
